@@ -3,3 +3,7 @@ SoftDev
 P01 -- ArRESTed Development
 2021-12-09
 
+rachelX -- 2021-12-09 19:40
+REVISIONS FOR DESIGN DOC:
+Added more detailed descriptions for components and purpose.
+Updated site map to better show the linkages of pages of the website.
