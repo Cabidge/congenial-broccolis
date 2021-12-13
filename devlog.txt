@@ -12,3 +12,6 @@ wenhaoD -- 2021-12-13 09:23
 Started work on database module.
 Revised design doc with updated table structure.
 Created gitignore file.
+
+austinN -- 2021-12-13 09:25
+Started initial work for login part
