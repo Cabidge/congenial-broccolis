@@ -4,6 +4,7 @@
 # 2021-12-10
 
 from flask import Flask, request, redirect, render_template, session
+import database
 app = Flask(__name__)
 
 
@@ -29,20 +30,23 @@ def login():
 	username = request.form["username"]
 	password = request.form["password"]
     
-	if username.strip() == "" or password.strip == "":
+	if username.strip() == "" or password.strip() == "":
 		return "" #should return something that tells user they cannot have a blank user/pass
     
 	user_id = database.fetch_user_id(username, password)
 	if user_id is None:
 		return "1" #shold return page telling user that something is incorrect
-    	
-	return "login"
+    
+    session["user"] = database.fetch_username(user_id)
+    session["user_id"] = user_id
+    return redirect("/")
 		
 
 @app.route("/logout")
 def logout():
 	if loggedIn():
 		session.pop("user")
+		session.pop("user_id")
 	return redirect("/")
 
 
