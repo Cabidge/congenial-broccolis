@@ -52,6 +52,11 @@ def logout():
 
 @app.route("/signup")
 def signup():
+	if request.method == "GET":
+		return render_template("register.html")
+	#nUser = request.form[]
+    #nPass = request.form[]
+    #if nUser.strip() == "" or nPass.srip() == "":
     return "signup"
 
 
