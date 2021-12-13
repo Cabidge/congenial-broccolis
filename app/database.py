@@ -2,3 +2,142 @@ import sqlite3
 
 db = sqlite3.connect("database.db")
 cur = db.cursor()
+
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS users(
+      id INTEGER PRIMARY KEY,
+      username TEXT,
+      password TEXT)""")
+
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS movies(
+      id INTEGER PRIMARY KEY,
+      title TEXT,
+      cover_url TEXT)""")
+
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS books(
+      id INTEGER PRIMARY KEY,
+      title TEXT,
+      cover_url TEXT)""")
+
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS entries(
+      id INTEGER PRIMARY KEY,
+      type TEXT,
+      user_id INTEGER,
+      media_id INTEGER,
+      complete BOOLEAN)""")
+
+db.commit()
+db.close()
+
+#####################
+#                   #
+# Utility Functions #
+#                   #
+#####################
+
+
+def fetch_user_id(username, password):
+    """
+    Gets the id of the user with the given username/password combination from the database.
+    Returns None if the combination is incorrect.
+    """
+    db = sqlite3.connect(DB_FILE)
+
+    # The following line turns the tuple into a single value (sqlite3 commands always return a tuple, even when it is one value)
+    # You can read more about row_factory in the official docs:
+    # https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.row_factory
+    db.row_factory = lambda curr, row: row[0]
+    c = db.cursor()
+
+    c.execute("""
+        SELECT id
+        FROM   users
+        WHERE  LOWER(username) = LOWER(?)
+        AND    password = ?
+    """, (username, password))
+
+    # user_id is None if no matches were found
+    user_id = c.fetchone()
+
+    db.close()
+
+    return user_id
+
+
+def register_user(username, password):
+    """
+    Tries to add the given username and password into the database.
+    Returns False if the user already exists, True if it successfully added the user.
+    """
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    c.execute("SELECT * FROM users WHERE LOWER(username) = LOWER(?)", (username,))
+    row = c.fetchone()
+
+    if row is not None:
+        return False
+
+    c.execute("""INSERT INTO users(username,password) VALUES(?, ?)""",(username,password))
+    db.commit()
+    db.close()
+    return True
+
+
+def fetch_username(user_id):
+    """
+    Returns the username of the user with the given id.
+    """
+    db = sqlite3.connect(DB_FILE)
+    db.row_factory = lambda curr, row: row[0]
+    c = db.cursor()
+
+    c.execute("SELECT username FROM users WHERE id = ?", (user_id,))
+    username = c.fetchone()
+
+    db.close()
+    return username
+
+
+def fetch_media(media_id, media_type):
+    """
+    Returns a dictionary containing the information of the media.
+    It should also have a key "type" with the value of what media type it is.
+    """
+    db = sqlite3.connect(DB_FILE)
+    db.row_factory = sqlite3.Row
+
+    if media_type == "book":
+        table = "books"
+    elif media_type == "movie":
+        table = "movies"
+    else:
+        return None
+
+    c.execute("""
+        SELECT *
+        FROM   ?
+        WHERE  id = ?""", (table, media_id))
+
+    media = c.fetchone()
+
+    db.close()
+
+    if media is None:
+        return
+
+    media = dict(media)
+    media["type"] = media_type
+
+    return media
+
+
+def fetch_entries(user_id):
+    """
+    Returns a list of dictionaries in the same format as fetch_media,
+    all of which come from entries made by the user with the given user_id.
+    """
+    pass
