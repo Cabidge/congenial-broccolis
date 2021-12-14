@@ -4,31 +4,30 @@ SoftDev
 P01 -- ArRESTed Development
 2021-12-10 -->
 
-
 <h3> Enter your Username and Password</h3>
 
 <form method = "POST"> 
     <input 
-	placeholder="username"
-	name = "username"
+	placeholder="newusername"
+	name = "newusername"
 	required
 	pattern="\S+"
 	minlength="1">
 	</input>
 
 	<input 
-	placeholder="password"
-	name = "password"
+	placeholder="newpassword"
+	name = "newpassword"
 	required 
 	pattern = "\S+"
 	minlength="1"
 	type="password"
 	></input>
 
-	<input type="submit" value="Login"/>
+	<input type="submit" value="Register"/>
 
 </form>
 
 <p style="color:red;">{{ explain }}</p>
 
-<a id="register" href = "/register"> Don't have an Account? Sign up!</a>
+<a id="login" href = "/login"> Have an Account? Log in!</a>
