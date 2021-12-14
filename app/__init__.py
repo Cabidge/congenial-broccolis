@@ -5,46 +5,49 @@
 
 from flask import Flask, request, redirect, render_template, session
 import database
+
 app = Flask(__name__)
+
+
+def logged_in():
+	return "user" in session
 
 
 @app.route("/")
 def home():
-	if loggedIn():
-		return 1 #will change
-
-
-
-def loggedIn():
-	return "user" in session
+	if logged_in():
+		return render_template("home.html", user=session["user"], library="")
+	return redirect("/login")
 
 
 @app.route("/login")
 def login():
-	if loggedIn():
+	if logged_in():
 		return redirect("/")
-		
+
 	if request.method == 'GET':
-		return "hello"
-        
+		return render_template("login.html")
+
 	username = request.form["username"]
 	password = request.form["password"]
-    
+
 	if username.strip() == "" or password.strip() == "":
-		return "" #should return something that tells user they cannot have a blank user/pass
-    
+		return "render login template with error about not having blank fields"
+
+	# Verify this user and password exists
 	user_id = database.fetch_user_id(username, password)
 	if user_id is None:
-		return "1" #shold return page telling user that something is incorrect
-    
-    session["user"] = database.fetch_username(user_id)
-    session["user_id"] = user_id
-    return redirect("/")
-		
+		return "render login template with error about the user not existing or the info is wrong"
+
+	# Adds user and user id to session if all is well
+	session["user"] = database.fetch_username(user_id)
+	session["user_id"] = user_id
+	return redirect("/")
+
 
 @app.route("/logout")
 def logout():
-	if loggedIn():
+	if logged_in():
 		session.pop("user")
 		session.pop("user_id")
 	return redirect("/")
@@ -57,7 +60,7 @@ def signup():
 	#nUser = request.form[]
     #nPass = request.form[]
     #if nUser.strip() == "" or nPass.srip() == "":
-    return "signup"
+	return "signup"
 
 
 if __name__ == "__main__":
