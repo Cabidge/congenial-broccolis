@@ -55,12 +55,24 @@ def logout():
 
 @app.route("/signup")
 def signup():
+	if is_logged_in():
+		return redirect("/")
+
+	# Default page
 	if request.method == "GET":
 		return render_template("register.html")
-	#nUser = request.form[]
-    #nPass = request.form[]
-    #if nUser.strip() == "" or nPass.srip() == "":
-	return "signup"
+
+	# Check sign
+	user = request.form["newusername"]
+	pwd = request.form["newpassword"]
+	if user.strip() == "" or pwd.strip == "":
+		return render_template('register.html', explain="Please enter characters and/or numbers")
+
+	register_success = database.register_user(user, pwd)
+	if not register_success:
+		return render_template('register.html', explain="username already exists")
+
+	return redirect("/login")
 
 
 if __name__ == "__main__":
