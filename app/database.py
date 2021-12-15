@@ -44,7 +44,7 @@ def fetch_user_id(username, password):
     Gets the id of the user with the given username/password combination from the database.
     Returns None if the combination is incorrect.
     """
-    db = sqlite3.connect(DB_FILE)
+    db = sqlite3.connect("database.db")
 
     # The following line turns the tuple into a single value (sqlite3 commands always return a tuple, even when it is one value)
     # You can read more about row_factory in the official docs:

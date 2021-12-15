@@ -17,10 +17,10 @@ def logged_in():
 def home():
 	if logged_in():
 		return render_template("home.html", user=session["user"], library="")
-	return redirect("/login")
+	return redirect("/login") #render home template
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
 	if logged_in():
 		return redirect("/")
@@ -53,15 +53,17 @@ def logout():
 	return redirect("/")
 
 
-@app.route("/signup")
+@app.route("/signup", methods=['GET', 'POST'])
 def signup():
-	if is_logged_in():
+	if logged_in():
 		return redirect("/")
 
 	# Default page
-	if request.method == "GET":
+	else:
 		return render_template("register.html")
 
+@app.route("/register", methods=['GET', 'POST'])
+def register():
 	# Check sign
 	user = request.form["newusername"]
 	pwd = request.form["newpassword"]
@@ -71,9 +73,9 @@ def signup():
 	register_success = database.register_user(user, pwd)
 	if not register_success:
 		return render_template('register.html', explain="username already exists")
-
-	return redirect("/login")
-
+	
+	else:
+		return render_template('login.html')
 
 if __name__ == "__main__":
     app.debug = True
