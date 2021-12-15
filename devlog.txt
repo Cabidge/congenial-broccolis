@@ -31,3 +31,5 @@ Started api requests for book reviews by accessing specific information.
 austinN + lieselW -- 2021-12-15 09:11
 Finished implementing login.
 
+wenhaoD -- 2021-12-15 9:15
+Started integrating imdb api with the database.
