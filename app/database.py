@@ -1,6 +1,8 @@
 import sqlite3
+import api
 
-db = sqlite3.connect("database.db")
+DB_FILE = "database.db"
+db = sqlite3.connect(DB_FILE)
 cur = db.cursor()
 
 cur.execute("""
@@ -44,7 +46,7 @@ def fetch_user_id(username, password):
     Gets the id of the user with the given username/password combination from the database.
     Returns None if the combination is incorrect.
     """
-    db = sqlite3.connect("database.db")
+    db = sqlite3.connect(DB_FILE)
 
     # The following line turns the tuple into a single value (sqlite3 commands always return a tuple, even when it is one value)
     # You can read more about row_factory in the official docs:
@@ -133,6 +135,25 @@ def fetch_media(media_id, media_type):
     media["type"] = media_type
 
     return media
+
+
+def search_for_movies(title):
+	"""
+	Searches for movies with the matching title using the imdb api.
+	The movie information is then stored in the movies table.
+	Returns a list of dictionaries with the title, id, and cover_url.
+	"""
+    json = api.imdb_search(title)
+	res = json["results"]
+	movies = []
+	for result in res:
+		movie = {}
+		movie["id"] = int(result["id"][2:])
+		movie["title"] = f"{result['title']} {result['description']}"
+		movie["cover_url"] = result["image"]
+		movies.append(movie)
+	
+	# TODO complete this
 
 
 def fetch_entries(user_id):
