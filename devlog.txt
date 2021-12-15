@@ -16,11 +16,14 @@ Created gitignore file.
 austinN -- 2021-12-13 09:25
 Started initial work for login part.
 
-lieselW -- 2021-12-13 9:30
+lieselW -- 2021-12-13 09:30
 Pushed template for login page.
 
 rachelX -- 2021-12-14 08:57
 Created home page template and rendered template in Flask.
 
-wenhaoD -- 2021-12-14 9:22
+wenhaoD -- 2021-12-14 09:22
 Started work on api requests.
+
+rachelX -- 2021-12-15 12:54
+Started api requests for book reviews by accessing specific information.
