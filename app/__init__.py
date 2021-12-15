@@ -17,7 +17,7 @@ def logged_in():
 def home():
 	if logged_in():
 		return render_template("home.html", user=session["user"], library="")
-	return render_template("home.html") #render home template
+	return render_template("login.html") #render login template because can't access home page without logging in
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -62,6 +62,7 @@ def signup():
 	else:
 		return render_template("register.html")
 
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
 	# Check sign
@@ -73,9 +74,10 @@ def register():
 	register_success = database.register_user(user, pwd)
 	if not register_success:
 		return render_template('register.html', explain="username already exists")
-	
+
 	else:
 		return render_template('login.html')
+
 
 if __name__ == "__main__":
     app.debug = True
