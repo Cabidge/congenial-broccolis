@@ -17,7 +17,7 @@ def logged_in():
 def home():
 	if logged_in():
 		return render_template("home.html", user=session["user"], library="")
-	return redirect("/login") #render home template
+	return render_template("home.html") #render home template
 
 
 @app.route("/login", methods=['GET', 'POST'])
