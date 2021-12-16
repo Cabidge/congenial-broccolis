@@ -84,7 +84,7 @@ def signup():
 @app.route("/searchMovie")
 def search_movie():
 	searchQ = request.form["search"]
-	movie_dict = api.imdb_search(searchQ)
+	movie_dict = database.search_for_movies(searchQ)
 	return "returns template with every entry from api"
 	#WIP	
 
@@ -93,7 +93,7 @@ def search_book():
 	searchQ = request.form["search"]
 	book_dict = api.nyt_search(searchQ)
 	return "returns template with every entry from api"
-	#WIP
+	#WIP, should use method from database.py
 
 if __name__ == "__main__":
 	app.debug = True
