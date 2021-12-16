@@ -45,3 +45,6 @@ Added cards to home page.
 
 rachelX -- 2021-12-16 09:25
 Created add modal.
+
+rachelX -- 2021-12-16 14:45
+Edited home page and created results route.
