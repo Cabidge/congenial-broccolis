@@ -81,6 +81,20 @@ def signup():
 		return render_template("login.html")
 
 
+@app.route("/searchMovie")
+def search_movie():
+	searchQ = request.form["search"]
+	movie_dict = api.imdb_search(searchQ)
+	return "returns template with every entry from api"
+	#WIP	
+
+@app.route("/searchBook")
+def search_book():
+	searchQ = request.form["search"]
+	book_dict = api.nyt_search(searchQ)
+	return "returns template with every entry from api"
+	#WIP
+
 if __name__ == "__main__":
 	app.debug = True
 	app.run()
