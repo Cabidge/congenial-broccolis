@@ -40,5 +40,8 @@ Started integrating imdb api with the database.
 rachelX -- 2021-12-15 20:21
 Finished functionality of registering and logging in.
 
-lieselW -- 2021-12-16 9:20
-Added cards to home page
+lieselW -- 2021-12-16 09:20
+Added cards to home page.
+
+rachelX -- 2021-12-16 09:25
+Created add modal.
