@@ -143,7 +143,7 @@ def search_for_movies(title):
 	The movie information is then stored in the movies table.
 	Returns a list of dictionaries with the title, id, and cover_url.
 	"""
-    json = api.imdb_search(title)
+	json = api.imdb_search(title)
 	res = json["results"]
 	movies = []
 	for result in res:
