@@ -12,6 +12,8 @@ P01 -- ArRESTed Development
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <title>Library</title>
   </head>
   <body>
@@ -26,15 +28,12 @@ P01 -- ArRESTed Development
             </div>
               <div class="col-sm" >
                 <div class = "container">
-                <div class="" role="alert">
                 <center>
                      <div class="card" style="width: 30%"> <!-- Is there a way to do this without inline styling? -->
                        <img src="assets/turkey.jpeg" class="card-img-top">
                        <div class="card-body"> <!-- building block of the card -->
                        <h5 class="card-title">Turkeys</h5>
                        <p class="card-text"> IMAGE</p>
-              
-                        </h2>
                     </div> <!-- card body div -->
                   </div> <!-- card div -->
                 </center>
@@ -54,7 +53,7 @@ P01 -- ArRESTed Development
                      <div class="card-body"> <!-- building block of the card -->
                      <h5 class="card-title">Turkeys</h5>
                      <p class="card-text"> IMAGE</p>
-            
+
                       </h2>
                   </div> <!-- card body div -->
                 </div> <!-- card div -->
@@ -72,16 +71,42 @@ P01 -- ArRESTed Development
                  <div class="card-body"> <!-- building block of the card -->
                  <h5 class="card-title">Turkeys</h5>
                  <p class="card-text"> IMAGE</p>
-        
+
                   </h2>
               </div> <!-- card body div -->
             </div> <!-- card div -->
           </center>
         </div>
         </div> <!--container div-->
-      </div> 
+      </div>
     </div> <!--row div-->
    </div> <!--container div -->
+
+   <!-- Button trigger modal -->
+   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+     <svg xmlns="http://www.w3.org/2000/svg" width="75" height="100" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+     </svg>
+   </button>
+
+   <!-- Modal -->
+   <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-body text-center">
+           <!-- Lessons Modal - Title-->
+           <h2 class="portfolio-modal-title text-secondary mb-0">Add a Card</h2>
+           <!-- Lessons Modal - Text-->
+           <p class="mb-5">
+           </p>
+
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times fa-fw">Close</button>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <button class="btn btn-secondary"><a id="logout" href = "/logout" style="color: white; text-decoration:none">Logout</a></button>
 
   </body>
 </html>
