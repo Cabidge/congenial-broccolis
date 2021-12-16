@@ -12,8 +12,7 @@ An online library containing a user selected list of books and movies. Each user
 ## Launch Codes:
 
 1. Activate virtual environment: `source <name>/bin/activate` or `source <name>/Scripts/activate` for Windows
-  - If virtual environment is not already created:
-    - Create the virtual environment: `python3 -m venv <name>`
+   - If you don't have a virtual environment, create one: `python3 -m venv <name>`
 2. Clone this repository: `git clone https://github.com/Cabidge/congenial-broccolis.git`
 3. Cd into the repo directory: `cd congenial-broccolis`
 4. Install the required modules: `pip install -r requirements.txt`
