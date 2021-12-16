@@ -17,96 +17,88 @@ P01 -- ArRESTed Development
     <title>Library</title>
   </head>
   <body>
+    <!-- Heading -->
     <center>
       <h1>{{user}}'s Library</h1>
+      <button class="btn btn-secondary"><a id="logout" href = "/logout" style="color: white; text-decoration:none">Logout</a></button>
     </center>
+    <br>
 
-    <div class="container">
-      <div class="row">
-        <div class="col" style = "background-color: pink">
-           </div> <!--container div-->
+    <!-- Cards for the library -->
+    <center class="container justify-content-center">
+      <div class="row align-items-start">
+
+        <div class="col">
+          <div class="card" style="width: 20rem; height: 25rem;">
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
             </div>
-              <div class="col-sm" >
-                <div class = "container">
-                <center>
-                     <div class="card" style="width: 30%"> <!-- Is there a way to do this without inline styling? -->
-                       <img src="assets/turkey.jpeg" class="card-img-top">
-                       <div class="card-body"> <!-- building block of the card -->
-                       <h5 class="card-title">Turkeys</h5>
-                       <p class="card-text"> IMAGE</p>
-                    </div> <!-- card body div -->
-                  </div> <!-- card div -->
-                </center>
-              </div>
-            </div> <!--container div-->
+            <img src="..." class="card-img-top"> <!-- Cover Image -->
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <a href="#" class="card-link">Card link</a>
+              <p class="card-text">Summary</p>
+            </div>
+          </div>
         </div>
 
         <div class="col">
-          </div> <!--container div-->
+          <div class="card" style="width: 20rem; height: 25rem;">
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
             </div>
-            <div class="col-sm" >
-              <div class = "container">
-              <div class="" role="alert">
-              <center>
-                   <div class="card" style="width: 30%"> <!-- Is there a way to do this without inline styling? -->
-                     <img src="assets/turkey.jpeg" class="card-img-top">
-                     <div class="card-body"> <!-- building block of the card -->
-                     <h5 class="card-title">Turkeys</h5>
-                     <p class="card-text"> IMAGE</p>
-
-                      </h2>
-                  </div> <!-- card body div -->
-                </div> <!-- card div -->
-              </center>
+            <img src="..." class="card-img-top"> <!-- Cover Image -->
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <a href="#" class="card-link">Card link</a>
+              <p class="card-text">Summary</p>
             </div>
-          </div> <!--container div-->
-       </div>
-
-       <div class="col" >
-          <div class = "container">
-          <div class="" role="alert">
-          <center>
-               <div class="card" style="width: 30%"> <!-- Is there a way to do this without inline styling? -->
-                 <img src="assets/turkey.jpeg" class="card-img-top">
-                 <div class="card-body"> <!-- building block of the card -->
-                 <h5 class="card-title">Turkeys</h5>
-                 <p class="card-text"> IMAGE</p>
-
-                  </h2>
-              </div> <!-- card body div -->
-            </div> <!-- card div -->
-          </center>
+          </div>
         </div>
-        </div> <!--container div-->
+
+        <div class="col">
+          <div class="card" style="width: 20rem; height: 25rem;">
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+            </div>
+            <img src="..." class="card-img-top"> <!-- Cover Image -->
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <a href="#" class="card-link">Card link</a>
+              <p class="card-text">Summary</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" style="border-radius: 15px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="100" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div> <!-- End of row -->
+
+    </center>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <!-- Lessons Modal - Title-->
+            <h2 class="portfolio-modal-title text-secondary mb-0">Add a Card</h2>
+            <!-- Lessons Modal - Text-->
+            <br>
+            <button class="btn btn-secondary" style="padding-left: 100px; padding-right: 100px;"><a href="/book" style="color: white; text-decoration:none">Book</a></button>
+            <br><br>
+            <button class="btn btn-secondary" style="padding-left: 100px; padding-right: 100px;"><a href="/book" style="color: white; text-decoration:none">Movie</a></button>
+          </div>
+        </div>
       </div>
-    </div> <!--row div-->
-   </div> <!--container div -->
-
-   <!-- Button trigger modal -->
-   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-     <svg xmlns="http://www.w3.org/2000/svg" width="75" height="100" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-     </svg>
-   </button>
-
-   <!-- Modal -->
-   <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-body text-center">
-           <!-- Lessons Modal - Title-->
-           <h2 class="portfolio-modal-title text-secondary mb-0">Add a Card</h2>
-           <!-- Lessons Modal - Text-->
-           <p class="mb-5">
-           </p>
-
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times fa-fw">Close</button>
-         </div>
-       </div>
-     </div>
-   </div>
-
-   <button class="btn btn-secondary"><a id="logout" href = "/logout" style="color: white; text-decoration:none">Logout</a></button>
+    </div>
 
   </body>
 </html>
