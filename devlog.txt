@@ -34,3 +34,6 @@ Started signup route. Bootstrap for forms.
 austinN + lieselW -- 2021-12-15 09:11
 Finished implementing login.
 
+rachelX -- 2021-12-15 20:21
+Finished functionality of registering and logging in.
+
