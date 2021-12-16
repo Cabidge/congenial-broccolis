@@ -5,9 +5,10 @@
 
 from flask import Flask, request, redirect, render_template, session
 import database
+from os import urandom
 
 app = Flask(__name__)
-
+app.secret_key = urandom(32)
 
 def logged_in():
 	return "user" in session
@@ -17,7 +18,7 @@ def logged_in():
 def home():
 	if logged_in():
 		return render_template("home.html", user=session["user"], library="")
-	return redirect("/login") #render home template
+	return render_template("login.html") #render login template because can't access home page without logging in
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -59,24 +60,27 @@ def signup():
 		return redirect("/")
 
 	# Default page
-	else:
+	if request.method == "GET":
 		return render_template("register.html")
 
-@app.route("/register", methods=['GET', 'POST'])
-def register():
-	# Check sign
+	# Check sign up
 	user = request.form["newusername"]
 	pwd = request.form["newpassword"]
 	if user.strip() == "" or pwd.strip == "":
-		return render_template('register.html', explain="Please enter characters and/or numbers")
+		return render_template("register.html", explain="Please enter characters and/or numbers")
 
-	register_success = database.register_user(user, pwd)
-	if not register_success:
-		return render_template('register.html', explain="username already exists")
-	
+	# Add user information if passwords match
+	if (request.form["newpassword"] != request.form["newpassword1"]):
+		return render_template("register.html", explain="The passwords do not match")
 	else:
-		return render_template('login.html')
+		register_success = database.register_user(user, pwd) # checks if not successful in the database file
+
+	if not register_success:
+		return render_template("register.html", explain="Username already exists")
+	else:
+		return render_template("login.html")
+
 
 if __name__ == "__main__":
-    app.debug = True
-    app.run()
+	app.debug = True
+	app.run()

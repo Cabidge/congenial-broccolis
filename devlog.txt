@@ -28,8 +28,14 @@ Started work on api requests.
 rachelX -- 2021-12-15 12:54
 Started api requests for book reviews by accessing specific information.
 
+rachelX -- 2021-12-15 08:51
+Started signup route. Bootstrap for forms.
+
 austinN + lieselW -- 2021-12-15 09:11
 Finished implementing login.
 
 wenhaoD -- 2021-12-15 9:15
 Started integrating imdb api with the database.
+
+rachelX -- 2021-12-15 20:21
+Finished functionality of registering and logging in.

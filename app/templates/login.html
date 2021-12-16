@@ -4,31 +4,36 @@ SoftDev
 P01 -- ArRESTed Development
 2021-12-10 -->
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h3> Enter your Username and Password</h3>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<form method = "POST">
-    <input
-	placeholder="username"
-	name = "username"
-	required
-	pattern="\S+"
-	minlength="1">
-	</input>
+    <title>Login</title>
+  </head>
+  <body>
+    <center>
+      <h2> Enter your Username and Password </h2>
+    </center>
 
-	<input
-	placeholder="password"
-	name = "password"
-	required
-	pattern = "\S+"
-	minlength="1"
-	type="password"
-	></input>
+    <form method="POST" action="/login">
+      <div class="mb-3">
+        <label for="exampleInputUsername1" class="form-label">Username</label>
+        <input type="username" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="username" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password" required>
+      </div>
+      <input type="submit" value="Login" class="btn btn-primary"></input>
+    </form>
 
-	<input type="submit" value="Login"/>
+  <p style="color:red;">{{ explain }}</p>
 
-</form>
+  <a id="register" href = "/signup"> Don't have an Account? Sign up!</a>
 
-<p style="color:red;">{{ explain }}</p>
-
-<a id="register" href = "/signup"> Don't have an Account? Sign up!</a>
+  </body>
+</html>
