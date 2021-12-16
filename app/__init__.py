@@ -81,19 +81,26 @@ def signup():
 		return render_template("login.html")
 
 
-@app.route("/searchMovie")
+@app.route("/movie")
 def search_movie():
 	searchQ = request.form["search"]
 	movie_dict = database.search_for_movies(searchQ)
 	return "returns template with every entry from api"
-	#WIP	
+	#WIP
 
-@app.route("/searchBook")
+
+@app.route("/book")
 def search_book():
 	searchQ = request.form["search"]
 	book_dict = api.nyt_search(searchQ)
 	return "returns template with every entry from api"
 	#WIP, should use method from database.py
+
+
+@app.route("/results")
+def results():
+	return render_template("results.html")
+
 
 if __name__ == "__main__":
 	app.debug = True
