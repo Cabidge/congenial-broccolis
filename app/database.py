@@ -111,6 +111,7 @@ def fetch_media(media_id, media_type):
     """
     db = sqlite3.connect(DB_FILE)
     db.row_factory = sqlite3.Row
+    c = db.cursor()
 
     if media_type == "book":
         table = "books"
@@ -153,7 +154,21 @@ def search_for_movies(title):
 		movie["cover_url"] = result["image"]
 		movies.append(movie)
 	
-	# TODO complete this
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	for movie in movies:
+		try:
+			c.execute("""
+				INSERT INTO movies(id, title, cover_url)
+				  VALUES(:id, :title, :cover_url)""", movie)
+
+		except sqlite3.IntegrityError:
+			print(f"Movie with id {movie['id']} already exists")
+	db.commit()
+	db.close()
+
+	return movies
 
 
 def fetch_entries(user_id):
