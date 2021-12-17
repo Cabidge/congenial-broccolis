@@ -28,54 +28,33 @@ P01 -- ArRESTed Development
     <center class="container justify-content-center">
       <div class="row align-items-start">
 
-        <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
-            </div>
 
-            <!-- Some input stuff to add to library -->
-            <button class="btn btn-primary">Add to Library</button>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
-            </div>
-          </div>
-        </div>
+  		{% for entry in json %}
+  	 	 <center class="container justify-content-center">
+  	  	  <div class="row align-items-start">
+		
+  	  	    <div class="col">
+  	  	      <div class="card" style="width: 20rem; height: 25rem;">
+  	  	        <div class="card-body">
+  	  	          <h5 class="card-title">Title</h5>
+  	  	          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+  	  	        </div>
+  	  	        <img src="..." class="card-img-top"> <!-- Cover Image -->
+  	  	        <div class="card-body">
+  	  	          <a href="#" class="card-link">Card link</a>
+    	          <p class="card-text">Summary</p>
+    	        </div>
+	
+    	        <!-- Some input stuff to add to library -->
+    	        <button class="btn btn-primary">Add to Library</button>
+    	      </div>
+    	    </div>
+  		{% endfor %}
 
       </div> <!-- End of row -->
 
     </center>
+
 
   </body>
 </html>
