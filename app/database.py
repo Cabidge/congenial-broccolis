@@ -171,6 +171,17 @@ def search_for_movies(title):
 	return movies
 
 
+def search_for_books(title):
+	json = api.ol_search(title)
+	res = json["docs"]
+	for result in res:
+		book = {}
+		work_id = result["key"].split["/"][-1]
+		book["id"] = int(work_id[2:-1])
+		book["title"] = result["title"]
+		# TODO finish
+
+
 def fetch_entries(user_id):
     """
     Returns a list of dictionaries in the same format as fetch_media,
