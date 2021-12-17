@@ -100,15 +100,19 @@ P01 -- ArRESTed Development
             <!-- Lessons Modal - Text-->
             <br>
             <div class="input-group">
-              <input type="search" class="form-control rounded" placeholder="Book Search" aria-label="Search"
-              aria-describedby="search-addon" name = "searchB" />
-              <button type="button" class="btn btn-outline-primary"><a href="/book"?>search</button></a>
+              <form method="POST" action="/book">
+                <input type="search" class="form-control rounded" placeholder="Book Search" aria-label="Search"
+                aria-describedby="search-addon" name="searchB">
+                <input type="submit" value="search" class="btn btn-primary"></input>
+              </form>
             </div>
             <br><br>
             <div class="input-group">
-              <input type="search" class="form-control rounded" placeholder="Movie Search" aria-label="Search"
-              aria-describedby="search-addon" name = "searchM"  />
-              <button type="button" class="btn btn-outline-primary">search</button>
+              <form  method="POST" action="/movie">
+                <input type="search" class="form-control rounded" placeholder="Movie Search" aria-label="Search"
+                aria-describedby="search-addon" name="searchM">
+                <input type="submit" value="search" class="btn btn-primary"></input>
+              </form>
             </div>
           </div>
         </div>

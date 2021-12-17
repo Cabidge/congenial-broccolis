@@ -83,23 +83,22 @@ def signup():
 
 @app.route("/movie")
 def search_movie():
-	searchQ = request.form["search"]
+	if not logged_in():
+		return redirect("/login")
+	searchQ = request.form["searchM"]
 	movie_dict = database.search_for_movies(searchQ)
-	return "returns template with every entry from api"
+	return render_template("results.html", title="")
 	#WIP
 
 
-@app.route("/book")
+@app.route("/book", methods=['GET', 'POST'])
 def search_book():
+	if not logged_in():
+		return redirect("/login")
 	searchQ = request.form["searchB"]
 	book_dict = database.nyt_search(searchQ)
-	return render_template("results.html", json=book_dict)
+	return render_template("results.html", title="", json=book_dict)
 	#WIP
-
-
-@app.route("/results")
-def results():
-	return render_template("results.html")
 
 
 if __name__ == "__main__":
