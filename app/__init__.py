@@ -81,13 +81,13 @@ def signup():
 		return render_template("login.html")
 
 
-@app.route("/movie")
+@app.route("/movie", methods=['GET', 'POST'])
 def search_movie():
 	if not logged_in():
 		return redirect("/login")
-	searchQ = request.form["searchM"]
-	movie_dict = database.search_for_movies(searchQ)
-	return render_template("results.html", title="")
+	searchM = request.form["searchM"]
+	movie_dict = database.search_for_movies(searchM)
+	return render_template("results.html", title="", json=movie_dict)
 	#WIP
 
 
@@ -96,7 +96,7 @@ def search_book():
 	if not logged_in():
 		return redirect("/login")
 	searchQ = request.form["searchB"]
-	book_dict = database.nyt_search(searchQ)
+	book_dict = database.search_for_movies(searchQ)
 	return render_template("results.html", title="", json=book_dict)
 	#WIP
 
