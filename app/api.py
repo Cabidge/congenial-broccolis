@@ -1,4 +1,5 @@
 from urllib import request
+import urllib.parse
 import json
 
 keys = {}
@@ -9,10 +10,33 @@ with open("keys.txt") as f:
 		[k, v] = line.rstrip().split("=")
 		keys[k] = v
 
+imdb_endpoint = "https://imdb-api.com/en/API"
+ol_endpoint = "http://openlibrary.org"
+
+#encode_plus = urllib.parse.quote_plus
+encode_query = urllib.parse.quote
+
 
 def imdb_search(expression):
-	req = request.Request(f"https://imdb-api.com/en/API/SearchMovie/{keys['imdb']}/{expression}", headers={"User-Agent": "Mozilla/5.0"})
+	# Makes the expression safe to put into query string
+	expression = encode_query(expression)
+        
+	req = request.Request(f"{imdb_endpoint}/SearchMovie/{keys['imdb']}/{expression}", headers={"User-Agent": "Mozilla/5.0"})
 	page = request.urlopen(req)
+	url_dict = json.loads(page.read())
+	return url_dict
+
+
+def ol_search(title):
+	"""
+	Searches for books on OpenLibrary.
+	Returns the json response.
+	https://openlibrary.org/developers/api
+	"""
+	# Makes the expression safe to put into query string
+	title = encode_query(title)
+
+	page = request.urlopen(f"{ol_endpoint}/search.json?title={title}") #f string to add key to the url
 	url_dict = json.loads(page.read())
 	return url_dict
 
