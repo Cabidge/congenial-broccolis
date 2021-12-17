@@ -48,3 +48,7 @@ Created add modal.
 
 rachelX -- 2021-12-16 14:45
 Edited home page and created results route.
+
+austinN -- 2021-12-16 23:29
+Templates correctly rendered when login info is incorrect
+Started implementing search bar/function for adding cards
