@@ -43,6 +43,9 @@ Finished functionality of registering and logging in.
 lieselW -- 2021-12-16 09:20
 Added cards to home page.
 
+wenhaoD -- 2021-12-16 09:20
+Finished database movie search.
+
 rachelX -- 2021-12-16 09:25
 Created add modal.
 
@@ -52,3 +55,7 @@ Edited home page and created results route.
 austinN -- 2021-12-16 23:29
 Templates correctly rendered when login info is incorrect
 Started implementing search bar/function for adding cards
+
+wenhaoD -- 2021-12-17 09:24
+Made api searches safe.
+Started work on database movie search.
