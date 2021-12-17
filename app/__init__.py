@@ -33,12 +33,12 @@ def login():
 	password = request.form["password"]
 
 	if username.strip() == "" or password.strip() == "":
-		return "render login template with error about not having blank fields"
+		return render_template("login.html", explain = "Username/Password cannot be blank")
 
 	# Verify this user and password exists
 	user_id = database.fetch_user_id(username, password)
 	if user_id is None:
-		return "render login template with error about the user not existing or the info is wrong"
+		return render_template("login.html", explain = "No such user exists.")
 
 	# Adds user and user id to session if all is well
 	session["user"] = database.fetch_username(user_id)
@@ -91,10 +91,10 @@ def search_movie():
 
 @app.route("/book")
 def search_book():
-	searchQ = request.form["search"]
-	book_dict = api.nyt_search(searchQ)
-	return "returns template with every entry from api"
-	#WIP, should use method from database.py
+	searchQ = request.form["searchB"]
+	book_dict = database.nyt_search(searchQ)
+	return render_template("results.html", json=book_dict)
+	#WIP
 
 
 @app.route("/results")
