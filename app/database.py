@@ -204,7 +204,7 @@ def search_for_books(title):
 	books = []
 	for result in res:
 		book = {}
-		work_id = result["key"].split["/"][-1]
+		work_id = result["key"].split("/")[-1]
 		book["id"] = int(work_id[2:-1])
 		book["title"] = result["title"]
 		book["cover_url"] = "https://covers.openlibrary.org/b/id/{result['cover_i']}-S.jpg"
