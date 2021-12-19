@@ -159,13 +159,10 @@ def search_for_movies(title):
 	c = db.cursor()
 
 	for movie in movies:
-		try:
-			c.execute("""
-				INSERT INTO movies(id, title, cover_url)
-				  VALUES(:id, :title, :cover_url)""", movie)
+		c.execute("""
+			INSERT OR REPLACE INTO movies(id, title, cover_url)
+				VALUES(:id, :title, :cover_url)""", movie)
 
-		except sqlite3.IntegrityError:
-			print(f"Movie with id {movie['id']} already exists")
 	db.commit()
 	db.close()
 
@@ -216,13 +213,10 @@ def search_for_books(title):
 	c = db.cursor()
 
 	for book in books:
-		try:
-			c.execute("""
-				INSERT INTO books(id, title, cover_url, author)
-				  VALUES(:id, :title, :cover_url, :author)""", book)
+		c.execute("""
+			INSERT OR REPLACE INTO books(id, title, cover_url, author)
+				VALUES(:id, :title, :cover_url, :author)""", book)
 
-		except sqlite3.IntegrityError:
-			print(f"Book with id {book['id']} already exists")
 	db.commit()
 	db.close()
 
