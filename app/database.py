@@ -21,7 +21,8 @@ cur.execute("""
     CREATE TABLE IF NOT EXISTS books(
       id INTEGER PRIMARY KEY,
       title TEXT,
-      cover_url TEXT)""")
+      cover_url TEXT,
+	  author TEXT)""")
 
 cur.execute("""
     CREATE TABLE IF NOT EXISTS entries(
@@ -171,15 +172,61 @@ def search_for_movies(title):
 	return movies
 
 
+def join_nouns(nouns):
+    """
+    Joins a list of strings into a single string with commas and an 'and'.
+    eg. ["Hamzah", "Bethaney", "Elliot"] -> "Hamzah, Bethaney and Elliot"
+    Used for joining author names.
+    """
+    if len(nouns) == 0:
+        return ""
+
+    if len(nouns) == 1:
+        return nouns[0]
+
+    s = nouns[0]
+    for noun in nouns[1:-1]:
+        s += ", " + noun
+    s += " and " + nouns[-1]
+
+    return s
+
+
 def search_for_books(title):
+	"""
+	Searches for books with the matching title using the openlibrary api.
+	The book information is then stored in the books table.
+	Returns a list of dictionaries with the title, id, cover_url, and author.
+	"""
 	json = api.ol_search(title)
 	res = json["docs"]
+
+	books = []
 	for result in res:
 		book = {}
 		work_id = result["key"].split["/"][-1]
 		book["id"] = int(work_id[2:-1])
 		book["title"] = result["title"]
-		# TODO finish
+		book["cover_url"] = "https://covers.openlibrary.org/b/id/{result['cover_i']}-S.jpg"
+		book["author"] = join_nouns(result["author_name"])
+
+		books.append(book)
+
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	for book in books:
+		try:
+			c.execute("""
+				INSERT INTO books(id, title, cover_url, author)
+				  VALUES(:id, :title, :cover_url, :author)""", book)
+
+		except sqlite3.IntegrityError:
+			print(f"Book with id {book['id']} already exists")
+	db.commit()
+	db.close()
+
+	return books
 
 
 def fetch_entries(user_id):

@@ -27,7 +27,7 @@ def imdb_search(expression):
 	return url_dict
 
 
-def ol_search(title):
+def ol_search(title, limit=10):
 	"""
 	Searches for books on OpenLibrary.
 	Returns the json response.
@@ -36,7 +36,7 @@ def ol_search(title):
 	# Makes the expression safe to put into query string
 	title = encode_query(title)
 
-	page = request.urlopen(f"{ol_endpoint}/search.json?title={title}") #f string to add key to the url
+	page = request.urlopen(f"{ol_endpoint}/search.json?title={title}&limit={limit}") #f string to add key to the url
 	url_dict = json.loads(page.read())
 	return url_dict
 

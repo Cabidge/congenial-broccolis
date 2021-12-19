@@ -58,4 +58,7 @@ Started implementing search bar/function for adding cards
 
 wenhaoD -- 2021-12-17 09:24
 Made api searches safe.
-Started work on database movie search.
+Started work on database book search.
+
+wenhaoD -- 2021-12-18 20:51
+Finished book searches -- needs further testing.
