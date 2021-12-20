@@ -63,5 +63,8 @@ Started work on database book search.
 wenhaoD -- 2021-12-18 20:51
 Finished book searches -- needs further testing.
 
+rachelX -- 2021-12-20 09:10
+Finished results page to display correct cards after searching.
+
 wenhaoD -- 2021-12-20 09:21
 Fixed bugs with search_for_books where books had no cover or author.
