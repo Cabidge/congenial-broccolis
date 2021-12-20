@@ -30,15 +30,15 @@ P01 -- ArRESTed Development
 
         {% for entry in json %}
         <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
+          <div class="card" style="width: 20rem;">
             <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <h5 class="card-title">{{entry.title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{entry.author}}</h6>
             </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
+            <img style="height: 15rem;" src="{{entry.cover_url}}" class="card-img-top"> <!-- Cover Image -->
             <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
+              <a href="#" class="card-link"></a>
+              <p class="card-text">{{entry.summary}}</p>
             </div>
 
             <!-- Some input stuff to add to library -->
@@ -48,6 +48,7 @@ P01 -- ArRESTed Development
               </form>
             </div>
           </div>
+          <br>
         </div>
         {% endfor %}
 

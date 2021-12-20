@@ -96,7 +96,7 @@ def search_book():
 	if not logged_in():
 		return redirect("/login")
 	searchQ = request.form["searchB"]
-	book_dict = database.search_for_movies(searchQ)
+	book_dict = database.search_for_books(searchQ)
 	return render_template("results.html", title=searchQ, json=book_dict)
 	#WIP
 
