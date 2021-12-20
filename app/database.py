@@ -204,8 +204,14 @@ def search_for_books(title):
 		work_id = result["key"].split("/")[-1]
 		book["id"] = int(work_id[2:-1])
 		book["title"] = result["title"]
-		book["cover_url"] = f"https://covers.openlibrary.org/b/id/{result['cover_i']}-L.jpg"
-		book["author"] = join_nouns(result["author_name"])
+		if "cover_i" in result:
+			book["cover_url"] = f"https://covers.openlibrary.org/b/id/{result['cover_i']}-L.jpg"
+		else:
+			book["cover_url"] = "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
+		if "author_name" in result:
+			book["author"] = join_nouns(result["author_name"])
+		else:
+			book["author"] = "No Author"
 
 		books.append(book)
 
