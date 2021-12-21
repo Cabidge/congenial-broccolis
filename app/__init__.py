@@ -98,20 +98,33 @@ def search_movie():
 def search_book():
 	if not logged_in():
 		return redirect("/login")
-	if "add" in request.form:
-		#WIP
-		
-		book = database.fetch_media(book_ID,"book")
-		return render_template("media.html")
 	searchQ = request.form["searchB"]
 	book_dict = database.search_for_books(searchQ)
 	return render_template("results.html", title=searchQ, json=book_dict)
 
-@app.route("/addMedia")
-def add_media():
+'''
+@app.route("/book/<media_id>")
+def display_book(media_id):
+	if not logged_in():
+		return redirect("/login")
+	book = database.fetch_media(media_id ,"book")
+	if "add" in request.form:
+		database.add_to_library("book", session["user_id"], media_id)
+		return render_template("media.html")
+	return render_template("media.html")
 
-	#database.add_entry(eType, user_id, media_id)
-	return redirect("/home")
+
+@app.route("/movie/<media_id>")
+def display_movie(media_id):
+	if not logged_in():
+		return redirect("/login")
+	movie = database.fetch_media(media_id, "movie")
+	if "add" in request.form:
+		database.add_to_library("book", session["user_id"], media_id)
+		return render_template("media.html")
+	return render_template("media.html")
+'''
+
 
 if __name__ == "__main__":
 	app.debug = True
