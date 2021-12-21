@@ -100,7 +100,9 @@ def search_book():
 		return redirect("/login")
 	if "add" in request.form:
 		#WIP
-		return render_template("results.html")
+		
+		book = database.fetch_media(book_ID,"book")
+		return render_template("media.html")
 	searchQ = request.form["searchB"]
 	book_dict = database.search_for_books(searchQ)
 	return render_template("results.html", title=searchQ, json=book_dict)
