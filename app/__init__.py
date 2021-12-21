@@ -17,7 +17,11 @@ def logged_in():
 @app.route("/")
 def home():
 	if logged_in():
+		# userU = session["user"]
+		# lib = database.fetch_user_id(userU) # should there be a separate function if the user is logged in?
 		return render_template("home.html", user=session["user"], library="")
+	# library should run the database function fetch_entries(user_id)
+
 	return render_template("login.html") #render login template because can't access home page without logging in
 
 
@@ -88,18 +92,24 @@ def search_movie():
 	searchM = request.form["searchM"]
 	movie_dict = database.search_for_movies(searchM)
 	return render_template("results.html", title=searchM, json=movie_dict)
-	#WIP
 
 
 @app.route("/book", methods=['GET', 'POST'])
 def search_book():
 	if not logged_in():
 		return redirect("/login")
+	if "add" in request.form:
+		#WIP
+		return render_template("results.html")
 	searchQ = request.form["searchB"]
 	book_dict = database.search_for_books(searchQ)
 	return render_template("results.html", title=searchQ, json=book_dict)
-	#WIP
 
+@app.route("/addMedia")
+def add_media():
+
+	#database.add_entry(eType, user_id, media_id)
+	return redirect("/home")
 
 if __name__ == "__main__":
 	app.debug = True

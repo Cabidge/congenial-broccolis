@@ -157,7 +157,7 @@ def search_for_movies(title):
 		movie["title"] = f"{result['title']} {result['description']}"
 		movie["cover_url"] = result["image"]
 		movies.append(movie)
-	
+
 	db = sqlite3.connect(DB_FILE)
 	c = db.cursor()
 
@@ -236,8 +236,40 @@ def search_for_books(title):
 
 
 def fetch_entries(user_id):
-	"""
-	Returns a list of dictionaries in the same format as fetch_media,
-	all of which come from entries made by the user with the given user_id.
-	"""
-	pass
+    """
+    Returns a list of dictionaries in the same format as fetch_media,
+    all of which come from entries made by the user with the given user_id.
+    """
+
+    c.execute("""
+
+    SELECT * FROM entries WHERE user_id = ? """,
+    user_id)
+
+    #entry=c.fetchone() should loop through every entry
+
+    db.commit()
+    db.close()
+
+    pass
+
+def add_to_library(type, user_id, media_id):
+    """
+    Adds entry to entries table with its corresponding information refering to a specific user.
+    This adds a book or movie to a user's library
+    """
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    complete = false # media shouldn't be completed by default
+    c.execute("""
+
+    INSERT INTO entries(type, user_id, media_id, complete) VALUES (?,?,?,?)""",
+    type, user_id, media_id, complete)
+
+
+    db.commit()
+    db.close()
+
+    return True
+    
