@@ -91,7 +91,7 @@ def search_movie():
 		return redirect("/login")
 	searchM = request.form["searchM"]
 	movie_dict = database.search_for_movies(searchM)
-	return render_template("results.html", title=searchM, json=movie_dict)
+	return render_template("results.html", title=searchM, json=movie_dict, type="movie")
 
 
 @app.route("/book", methods=['GET', 'POST'])
@@ -100,9 +100,9 @@ def search_book():
 		return redirect("/login")
 	searchQ = request.form["searchB"]
 	book_dict = database.search_for_books(searchQ)
-	return render_template("results.html", title=searchQ, json=book_dict)
+	return render_template("results.html", title=searchQ, json=book_dict, type="book")
 
-'''
+
 @app.route("/book/<media_id>")
 def display_book(media_id):
 	if not logged_in():
@@ -111,9 +111,9 @@ def display_book(media_id):
 	if "add" in request.form:
 		database.add_to_library("book", session["user_id"], media_id)
 		return render_template("media.html")
-	return render_template("media.html")
+	return render_template("media.html", media=book)
 
-
+'''
 @app.route("/movie/<media_id>")
 def display_movie(media_id):
 	if not logged_in():
