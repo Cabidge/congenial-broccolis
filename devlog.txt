@@ -68,3 +68,7 @@ Finished results page to display correct cards after searching.
 
 wenhaoD -- 2021-12-20 09:21
 Fixed bugs with search_for_books where books had no cover or author.
+
+austinN -- 2021-12-20 22:19
+Added database functions that help to add book/movie entries to a user's personal library, as well as for display.
+Started trying to find a way to add entries and then redirect user back to home, not functioning yet.
