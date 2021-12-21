@@ -114,18 +114,12 @@ def fetch_media(media_id, media_type):
 	db.row_factory = sqlite3.Row
 	c = db.cursor()
 
-	table = ""
 	if media_type == "book":
-		table = "books"
+		c.execute("SELECT * FROM books WHERE id = ?", (media_id,))
 	elif media_type == "movie":
-		table = "movies"
+		c.execute("SELECT * FROM movies WHERE id = ?", (media_id,))
 	else:
 		return None
-
-	c.execute("""
-		SELECT *
-		FROM   ?
-		WHERE  id = ?""", (table, media_id))
 
 	media = c.fetchone()
 
@@ -138,6 +132,7 @@ def fetch_media(media_id, media_type):
 	media["type"] = media_type
 
 	return media
+#print(fetch_media(25120844, "book"))
 
 
 def search_for_movies(title):
