@@ -51,6 +51,6 @@ def ol_search(title, limit=10):
 
 
 def nyt_search(expression):
-	page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?author={author}&api-key={keys['nyt']}") #f string to add key to the url
+	page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?api-key={keys['nyt']}") #f string to add key to the url
 	url_dict = json.loads(page.read())
 	return url_dict
