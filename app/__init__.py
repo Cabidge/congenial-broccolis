@@ -111,7 +111,7 @@ def display_book(media_id):
 	if "add" in request.form:
 		database.add_to_library("book", session["user_id"], media_id)
 		return render_template("media.html")
-	return render_template("media.html", media=book)
+	return render_template("media.html", entry=book)
 
 '''
 @app.route("/movie/<media_id>")
