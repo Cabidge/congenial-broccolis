@@ -236,22 +236,33 @@ def search_for_books(title):
 
 
 def fetch_entries(user_id):
-    """
-    Returns a list of dictionaries in the same format as fetch_media,
-    all of which come from entries made by the user with the given user_id.
-    """
+	"""
+	Returns a list of dictionaries in the same format as fetch_media,
+	all of which come from entries made by the user with the given user_id.
+	"""
 
-    c.execute("""
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
 
-    SELECT * FROM entries WHERE user_id = ? """,
-    user_id)
+	c.execute("""
+		SELECT media_id
+		     , media_type
+		FROM   entries
+		WHERE  user_id = ? """, (user_id,))
 
-    #entry=c.fetchone() should loop through every entry
+	entries_data = c.fetchall()
 
-    db.commit()
-    db.close()
+	entries = []
+	for media_id, media_type in entries_data:
+		media = fetch_media(media_id, media_type)
+		if media is not None:
+			entries.append(media)
 
-    pass
+	db.commit()
+	db.close()
+
+	return entries
+
 
 def add_to_library(type, user_id, media_id):
     """
