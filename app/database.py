@@ -114,6 +114,7 @@ def fetch_media(media_id, media_type):
 	db.row_factory = sqlite3.Row
 	c = db.cursor()
 
+	table = ""
 	if media_type == "book":
 		table = "books"
 	elif media_type == "movie":
@@ -272,15 +273,11 @@ def add_to_library(type, user_id, media_id):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    complete = false # media shouldn't be completed by default
-    c.execute("""
-
-    INSERT INTO entries(type, user_id, media_id, complete) VALUES (?,?,?,?)""",
-    type, user_id, media_id, complete)
+    complete = False # media shouldn't be completed by default
+    c.execute("INSERT INTO entries(type, user_id, media_id, complete) VALUES (?,?,?,?)", (type, user_id, media_id, complete))
 
 
     db.commit()
     db.close()
 
     return True
-    
