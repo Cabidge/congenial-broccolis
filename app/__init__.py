@@ -8,7 +8,7 @@ import database
 from os import urandom
 
 app = Flask(__name__)
-app.secret_key = "hello"
+app.secret_key = urandom(32)
 
 def logged_in():
 	return "user" in session
@@ -95,16 +95,12 @@ def search_movie():
 def search_book():
 	if not logged_in():
 		return redirect("/login")
-	searchB = ""
-	book_dict = []
-	if "searchB" in request.form:
-		searchB = request.form["searchB"]
-		book_dict = database.search_for_books(searchB)
 	if "add" in request.form:
-		print("yas")
-
-	return render_template("results.html", title=searchB, json=book_dict)
-	#WIP
+		#WIP
+		return render_template("results.html")
+	searchQ = request.form["searchB"]
+	book_dict = database.search_for_books(searchQ)
+	return render_template("results.html", title=searchQ, json=book_dict)
 
 
 if __name__ == "__main__":
