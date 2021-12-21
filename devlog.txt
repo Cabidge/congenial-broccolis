@@ -76,3 +76,6 @@ Started trying to find a way to add entries and then redirect user back to home,
 wenhaoD -- 2021-12-21 09:24
 Added error handling for apis.
 Implemented fetch_entries database function -- needs further testing.
+
+rachelX -- 2021-12-21 12:34
+Started routes for individual media and allow adding to library of specific media.
