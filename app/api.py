@@ -32,7 +32,7 @@ def imdb_search(expression):
 	return url_dict
 
 
-def ol_search(title, limit=10):
+def ol_search(title, limit=12):
 	"""
 	Searches for books on OpenLibrary.
 	Returns the json response.
