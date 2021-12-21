@@ -1,5 +1,6 @@
 from urllib import request
 import urllib.parse
+from urllib.error import HTTPError, URLError
 import json
 
 keys = {}
@@ -20,9 +21,13 @@ encode_query = urllib.parse.quote
 def imdb_search(expression):
 	# Makes the expression safe to put into query string
 	expression = encode_query(expression)
-        
+
 	req = request.Request(f"{imdb_endpoint}/SearchMovie/{keys['imdb']}/{expression}", headers={"User-Agent": "Mozilla/5.0"})
-	page = request.urlopen(req)
+	try:
+		page = request.urlopen(req)
+	except (HTTPError, URLError) as e:
+		print("Error ocurred fetching from api", e)
+		return None
 	url_dict = json.loads(page.read())
 	return url_dict
 
@@ -36,7 +41,11 @@ def ol_search(title, limit=10):
 	# Makes the expression safe to put into query string
 	title = encode_query(title)
 
-	page = request.urlopen(f"{ol_endpoint}/search.json?title={title}&limit={limit}") #f string to add key to the url
+	try:
+		page = request.urlopen(f"{ol_endpoint}/search.json?title={title}&limit={limit}") #f string to add key to the url
+	except (HTTPError, URLError) as e:
+		print("Error ocurred fetching from api", e)
+		return None
 	url_dict = json.loads(page.read())
 	return url_dict
 
