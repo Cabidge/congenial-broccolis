@@ -154,7 +154,7 @@ def search_for_movies(title):
 		movie["title"] = f"{result['title']} {result['description']}"
 		movie["cover_url"] = result["image"]
 		movies.append(movie)
-	
+
 	db = sqlite3.connect(DB_FILE)
 	c = db.cursor()
 

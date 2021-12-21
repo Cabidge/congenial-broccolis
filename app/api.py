@@ -20,7 +20,7 @@ encode_query = urllib.parse.quote
 def imdb_search(expression):
 	# Makes the expression safe to put into query string
 	expression = encode_query(expression)
-        
+
 	req = request.Request(f"{imdb_endpoint}/SearchMovie/{keys['imdb']}/{expression}", headers={"User-Agent": "Mozilla/5.0"})
 	page = request.urlopen(req)
 	url_dict = json.loads(page.read())
@@ -36,7 +36,8 @@ def ol_search(title, limit=10):
 	# Makes the expression safe to put into query string
 	title = encode_query(title)
 
-	page = request.urlopen(f"{ol_endpoint}/search.json?title={title}&limit={limit}") #f string to add key to the url
+	req = request.Request(f"{ol_endpoint}/search.json?title={title}&limit={limit}", headers={"User-Agent": "Mozilla/5.0"}) #f string to add key to the url
+	page = request.urlopen(req)
 	url_dict = json.loads(page.read())
 	return url_dict
 
