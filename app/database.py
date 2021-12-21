@@ -247,19 +247,23 @@ def fetch_entries(user_id):
 
     pass
 
-def add_entry(eType, user_id, media_id):
+def add_to_library(type, user_id, media_id):
     """
-    Adds entry to table with its corresponding information refering to a specific user.
+    Adds entry to entries table with its corresponding information refering to a specific user.
+    This adds a book or movie to a user's library
     """
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
 
-    complete = false # complete should be false by default
+    complete = false # media shouldn't be completed by default
     c.execute("""
 
     INSERT INTO entries(type, user_id, media_id, complete) VALUES (?,?,?,?)""",
-    eType, user_id, media_id, complete)
+    type, user_id, media_id, complete)
 
 
     db.commit()
     db.close()
 
     return True
+    
