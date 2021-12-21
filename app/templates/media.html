@@ -26,6 +26,7 @@ P01 -- ArRESTed Development
 
     <!-- Cards for the results -->
     <center class="container justify-content-center">
+      <h3 style="color: green">{{message}}</h3>
       <div class="row align-items-start">
 
         <div class="col">
@@ -42,8 +43,8 @@ P01 -- ArRESTed Development
 
             <!-- Some input stuff to add to library -->
             <div class="input-group">
-              <form  method="POST">
-                <input name="add" type="submit" value="Add to Library" class="btn btn-primary"></input>
+              <form method="GET" action="/{{entry.type}}/{{entry.id}}">
+                <input name="add" type="button" value="Add to Library" class="btn btn-primary"></input>
               </form>
             </div>
           </div>

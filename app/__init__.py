@@ -107,23 +107,22 @@ def search_book():
 def display_book(media_id):
 	if not logged_in():
 		return redirect("/login")
-	book = database.fetch_media(media_id ,"book")
+	book = database.fetch_media(media_id, "book")
 	if "add" in request.form:
-		database.add_to_library("book", session["user_id"], media_id)
-		return render_template("media.html")
-	return render_template("media.html", entry=book)
+		print(database.add_to_library("book", session["user_id"], media_id)) #why is it not working
+		return render_template("media.html", entry=book, message="Sucessfully added to your library!")
+	return render_template("media.html", entry=book, message="")
 
-'''
+
 @app.route("/movie/<media_id>")
 def display_movie(media_id):
 	if not logged_in():
 		return redirect("/login")
 	movie = database.fetch_media(media_id, "movie")
 	if "add" in request.form:
-		database.add_to_library("book", session["user_id"], media_id)
-		return render_template("media.html")
-	return render_template("media.html")
-'''
+		database.add_to_library("movie", session["user_id"], media_id)
+		return render_template("media.html", entry=movie, message="Sucessfully added to your library!")
+	return render_template("media.html", entry=movie, message="")
 
 
 if __name__ == "__main__":
