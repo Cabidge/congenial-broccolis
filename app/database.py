@@ -241,7 +241,7 @@ def fetch_entries(user_id):
 
 	c.execute("""
 		SELECT media_id
-		     , media_type
+		     , type
 		FROM   entries
 		WHERE  user_id = ? """, (user_id,))
 
