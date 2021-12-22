@@ -106,21 +106,22 @@ def display_book(media_id):
 		return redirect("/login")
 	if request.method == "GET":
 		book = database.fetch_media(media_id, "book")
-		return render_template("media.html", entry=book, message="")
+		return render_template("media.html", entry=book)
 	elif request.method == "POST":
-		print(database.add_to_library("book", session["user_id"], media_id)) #why is it not working
+		print(database.add_to_library("book", session["user_id"], media_id))
 		return redirect("/")
 
 
-@app.route("/movie/<media_id>")
+@app.route("/movie/<media_id>", methods=["GET", "POST"])
 def display_movie(media_id):
 	if not logged_in():
 		return redirect("/login")
-	movie = database.fetch_media(media_id, "movie")
-	if "add" in request.form:
-		database.add_to_library("movie", session["user_id"], media_id)
-		return render_template("media.html", entry=movie, message="Sucessfully added to your library!")
-	return render_template("media.html", entry=movie, message="")
+	if request.method == "GET":
+		movie = database.fetch_media(media_id, "movie")
+		return render_template("media.html", entry=movie)
+	elif request.method == "POST":
+		print(database.add_to_library("movie", session["user_id"], media_id))
+		return redirect("/")
 
 
 if __name__ == "__main__":
