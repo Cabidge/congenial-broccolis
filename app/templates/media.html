@@ -17,42 +17,58 @@ P01 -- ArRESTed Development
     <title>Media</title>
   </head>
   <body>
+    <!-- Navigation Bat -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Home</a>
+        <!-- Button that appears when the screen is too small -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation bar content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href = "/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <!-- Heading -->
     <center>
       <h1><i>{{entry.title}}</i></h1>
-      <button class="btn btn-secondary"><a id="logout" href = "/logout" style="color: white; text-decoration:none">Logout</a></button>
+      <cite title="Source Title" style="font-size:25px;">By: {{entry.author}}</cite><br>
     </center>
     <br>
 
     <!-- Cards for the results -->
-    <center class="container justify-content-center">
+    <div class="container justify-content-center">
       <h3 style="color: green">{{message}}</h3>
+
       <div class="row align-items-start">
 
         <div class="col">
-          <div class="card" style="width: 20rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{entry.title}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{entry.author}}</h6>
-            </div>
-            <img style="height: 25rem; object-fit: contain;" src="{{entry.cover_url}}" class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link"></a>
-              <p class="card-text">{{entry.summary}}</p>
-            </div>
+          <img style="height: 35rem; object-fit: contain;" src="{{entry.cover_url}}">
+        </div>
 
-            <!-- Some input stuff to add to library -->
-            <div class="input-group">
-              <form method="GET" action="/{{entry.type}}/{{entry.id}}">
-                <input name="add" type="button" value="Add to Library" class="btn btn-primary"></input>
-              </form>
-            </div>
+        <div class="col">
+          <p>summary</p>
+
+          <!-- Some input stuff to add to library -->
+          <div class="input-group">
+            <form method="POST" action="/{{entry.type}}/{{entry.id}}">
+              <input name="add" type="submit" value="Add to Library" class="btn btn-primary"></input>
+            </form>
           </div>
-          <br>
         </div>
 
       </div> <!-- End of row -->
-    </center>
+
+      <br>
+
+    </div>
 
   </body>
 </html>

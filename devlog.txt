@@ -82,3 +82,13 @@ Started routes for individual media and allow adding to library of specific medi
 
 rachelX -- 2021-12-21 19:06
 Added to nyt_search function to get more information about specific media.
+
+wenhaoD -- 2021-12-22 09:23
+Fixed fetch_entries.
+Set secret_key as a specific string to prevent having to log in multiple times.
+Added entries as argument to home template.
+Fixed add to library button.
+Created is_in_library function and added check in add_to_library.
+
+rachelX -- 2021-12-22 09:26
+Edited templates.
