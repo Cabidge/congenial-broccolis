@@ -26,7 +26,6 @@ cur.execute("""
 
 cur.execute("""
 	CREATE TABLE IF NOT EXISTS entries(
-	  id INTEGER PRIMARY KEY,
 	  type TEXT,
 	  user_id INTEGER,
 	  media_id INTEGER,
@@ -260,19 +259,40 @@ def fetch_entries(user_id):
 	return entries
 
 
-def add_to_library(type, user_id, media_id):
-    """
-    Adds entry to entries table with its corresponding information refering to a specific user.
-    This adds a book or movie to a user's library
-    """
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
+def is_in_library(media_type, user_id, media_id):
+	"""
+	Returns whether or not a given entry is already in a user's library.
+	"""
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
 
-    complete = False # media shouldn't be completed by default
-    c.execute("INSERT INTO entries(type, user_id, media_id, complete) VALUES (?,?,?,?)", (type, user_id, media_id, complete))
+	c.execute("""
+		SELECT *
+		FROM   entries
+		WHERE  user_id = ?
+		  AND  media_id = ?
+		  AND  type = ?""", (user_id, media_id, media_type))
+	entry = c.fetchone()
+
+	return entry is not None
 
 
-    db.commit()
-    db.close()
+def add_to_library(media_type, user_id, media_id):
+	"""
+	Adds entry to entries table with its corresponding information refering to a specific user.
+	This adds a book or movie to a user's library
+	"""
+	if is_in_library(media_type, user_id, media_id):
+		return False
 
-    return True
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	c.execute("""
+		INSERT INTO entries(type, user_id, media_id, complete)
+		  VALUES (?,?,?,?)""", (media_type, user_id, media_id, False))
+
+	db.commit()
+	db.close()
+
+	return True

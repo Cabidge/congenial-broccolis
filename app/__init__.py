@@ -19,7 +19,8 @@ def home():
 	if logged_in():
 		# userU = session["user"]
 		# lib = database.fetch_user_id(userU) # should there be a separate function if the user is logged in?
-		return render_template("home.html", user=session["user"], library="")
+		entries = database.fetch_entries(session["user_id"])
+		return render_template("home.html", user=session["user"], library=entries)
 	# library should run the database function fetch_entries(user_id)
 
 	return render_template("login.html") #render login template because can't access home page without logging in
@@ -103,15 +104,16 @@ def search_book():
 	return render_template("results.html", title=searchQ, json=book_dict, type="book")
 
 
-@app.route("/book/<media_id>")
+@app.route("/book/<media_id>", methods=["GET", "POST"])
 def display_book(media_id):
 	if not logged_in():
 		return redirect("/login")
-	book = database.fetch_media(media_id, "book")
-	if "add" in request.form:
+	if request.method == "GET":
+		book = database.fetch_media(media_id, "book")
+		return render_template("media.html", entry=book, message="")
+	elif request.method == "POST":
 		print(database.add_to_library("book", session["user_id"], media_id)) #why is it not working
-		return render_template("media.html", entry=book, message="Sucessfully added to your library!")
-	return render_template("media.html", entry=book, message="")
+		return redirect("/")
 
 
 @app.route("/movie/<media_id>")

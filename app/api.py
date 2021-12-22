@@ -1,5 +1,4 @@
 from urllib import request
-import requests
 import urllib.parse
 from urllib.error import HTTPError, URLError
 import json
