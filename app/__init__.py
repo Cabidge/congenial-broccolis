@@ -5,10 +5,10 @@
 
 from flask import Flask, request, redirect, render_template, session
 import database
-from os import urandom
+#from os import urandom
 
 app = Flask(__name__)
-app.secret_key = urandom(32)
+app.secret_key = "foo"
 
 def logged_in():
 	return "user" in session
