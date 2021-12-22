@@ -46,57 +46,32 @@ P01 -- ArRESTed Development
     <center class="container justify-content-center">
       <div class="row align-items-start">
 
+        {% for entry in library %}
         <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
+          <div class="card" style="width: 20rem;">
             <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <h5 class="card-title">{{entry.title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{entry.author}}</h6>
             </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
+            <img style="height: 25rem; object-fit: contain;" src="{{entry.cover_url}}" class="card-img-top"> <!-- Cover Image -->
             <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
+              <a href="#" class="card-link"></a>
+              <p class="card-text">{{entry.summary}}</p>
             </div>
-
             <!-- Switch to check if user finished -->
             <!-- Add database stuff to store this data -->
             <!-- <div class="form-check form-switch">
               <label class="form-check-label" for="flexSwitchCheckDefault">Finished</label>
               <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
             </div> -->
+
           </div>
+          <br>
         </div>
+        {% endfor %}
 
         <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card" style="width: 20rem; height: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            </div>
-            <img src="..." class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <p class="card-text">Summary</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <!-- Button trigger modal -->
+          <!-- Button trigger modal for searching media -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" style="border-radius: 15px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="75" height="100" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>

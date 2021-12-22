@@ -91,4 +91,7 @@ Fixed add to library button.
 Created is_in_library function and added check in add_to_library.
 
 rachelX -- 2021-12-22 09:26
-Edited templates.
+Edited templates with navigation bar.
+
+rachelX -- 2021-12-22 10:37
+Finished home page to display user's library.
