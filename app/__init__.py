@@ -103,15 +103,16 @@ def search_book():
 	return render_template("results.html", title=searchQ, json=book_dict, type="book")
 
 
-@app.route("/book/<media_id>")
+@app.route("/book/<media_id>", methods=["GET", "POST"])
 def display_book(media_id):
 	if not logged_in():
 		return redirect("/login")
-	book = database.fetch_media(media_id, "book")
-	if "add" in request.form:
+	if request.method == "GET":
+		book = database.fetch_media(media_id, "book")
+		return render_template("media.html", entry=book, message="")
+	elif request.method == "POST":
 		print(database.add_to_library("book", session["user_id"], media_id)) #why is it not working
-		return render_template("media.html", entry=book, message="Sucessfully added to your library!")
-	return render_template("media.html", entry=book, message="")
+		return redirect("/")
 
 
 @app.route("/movie/<media_id>")
