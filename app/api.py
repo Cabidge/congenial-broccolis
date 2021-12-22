@@ -1,4 +1,5 @@
 from urllib import request
+import requests
 import urllib.parse
 from urllib.error import HTTPError, URLError
 import json
@@ -50,7 +51,21 @@ def ol_search(title, limit=12):
 	return url_dict
 
 
-def nyt_search(expression):
-	page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?api-key={keys['nyt']}") #f string to add key to the url
+def nyt_search(expression, type):
+	"""
+	Searches for reviews based on type movies or books.
+	"""
+	title = ""
+	for c in expression:
+		if c == " ":
+			title += "+"
+		else:
+			title += c
+	page = ""
+	if type == "book":
+		page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?title={title}&api-key={keys['nyt']}") #f string to add key to the url
+	else:
+		page = request.urlopen(f"https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={title}&api-key={keys['nyt']}")
 	url_dict = json.loads(page.read())
 	return url_dict
+#print(nyt_search("titanic", "movie")["results"][0]["link"]["url"])

@@ -79,3 +79,6 @@ Implemented fetch_entries database function -- needs further testing.
 
 rachelX -- 2021-12-21 12:34
 Started routes for individual media and allow adding to library of specific media.
+
+rachelX -- 2021-12-21 19:06
+Added to nyt_search function to get more information about specific media.
