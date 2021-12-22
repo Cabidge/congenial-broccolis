@@ -259,11 +259,32 @@ def fetch_entries(user_id):
 	return entries
 
 
+def is_in_library(media_type, user_id, media_id):
+	"""
+	Returns whether or not a given entry is already in a user's library.
+	"""
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	c.execute("""
+		SELECT *
+		FROM   entries
+		WHERE  user_id = ?
+		  AND  media_id = ?
+		  AND  type = ?""", (user_id, media_id, media_type))
+	entry = c.fetchone()
+
+	return entry is not None
+
+
 def add_to_library(media_type, user_id, media_id):
 	"""
 	Adds entry to entries table with its corresponding information refering to a specific user.
 	This adds a book or movie to a user's library
 	"""
+	if is_in_library(media_type, user_id, media_id):
+		return False
+
 	db = sqlite3.connect(DB_FILE)
 	c = db.cursor()
 
