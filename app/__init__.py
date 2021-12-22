@@ -19,7 +19,8 @@ def home():
 	if logged_in():
 		# userU = session["user"]
 		# lib = database.fetch_user_id(userU) # should there be a separate function if the user is logged in?
-		return render_template("home.html", user=session["user"], library="")
+		entries = database.fetch_entries(session["user_id"])
+		return render_template("home.html", user=session["user"], library=entries)
 	# library should run the database function fetch_entries(user_id)
 
 	return render_template("login.html") #render login template because can't access home page without logging in
