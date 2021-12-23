@@ -90,6 +90,9 @@ def search():
 	query = request.form["search-query"]
 	media_type = request.form["media-type"]
 
+	if query == "": #if title is blank
+		return redirect("/")
+
 	if media_type == "book":
 		json = database.search_for_books(query)
 	elif media_type == "movie":
