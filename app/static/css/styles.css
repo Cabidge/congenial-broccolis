@@ -15,7 +15,8 @@ P01 -- ArRESTed Development
 }
 
 .login-box {
-	
+	height: 100%;
+	align-content: center;
 }
 
 .login-card {
