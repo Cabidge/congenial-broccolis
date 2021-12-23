@@ -93,17 +93,13 @@ P01 -- ArRESTed Development
             <!-- Lessons Modal - Text-->
             <br>
             <div class="input-group">
-              <form method="POST" action="/book">
-                <input type="search" class="form-control rounded" placeholder="Book Search" aria-label="Search"
-                aria-describedby="search-addon" name="searchB">
-                <input type="submit" value="search" class="btn btn-primary"></input>
-              </form>
-            </div>
-            <br><br>
-            <div class="input-group">
-              <form  method="POST" action="/movie">
-                <input type="search" class="form-control rounded" placeholder="Movie Search" aria-label="Search"
-                aria-describedby="search-addon" name="searchM">
+              <form method="POST" action="/search">
+                <input type="search" class="form-control rounded" placeholder="Search by Title" aria-label="Search"
+                  aria-describedby="search-addon" name="search-query">
+                <input type="radio" name="media-type" id="type-0" value="book" checked>
+                <label for="type-0">Book</label>
+                <input type="radio" name="media-type" id="type-1" value="movie">
+                <label for="type-1">Movie</label>
                 <input type="submit" value="search" class="btn btn-primary"></input>
               </form>
             </div>
