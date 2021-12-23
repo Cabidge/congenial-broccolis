@@ -82,22 +82,23 @@ def signup():
 		return render_template("login.html")
 
 
-@app.route("/movie", methods=['GET', 'POST'])
-def search_movie():
+@app.route("/search", methods=["POST"])
+def search():
 	if not logged_in():
 		return redirect("/login")
-	searchM = request.form["searchM"]
-	movie_dict = database.search_for_movies(searchM)
-	return render_template("results.html", title=searchM, json=movie_dict, type="movie")
 
+	query = request.form["search-query"]
+	media_type = request.form["media-type"]
 
-@app.route("/book", methods=['GET', 'POST'])
-def search_book():
-	if not logged_in():
-		return redirect("/login")
-	searchQ = request.form["searchB"]
-	book_dict = database.search_for_books(searchQ)
-	return render_template("results.html", title=searchQ, json=book_dict, type="book")
+	if query == "": #if title is blank
+		return redirect("/")
+
+	if media_type == "book":
+		json = database.search_for_books(query)
+	elif media_type == "movie":
+		json = database.search_for_movies(query)
+
+	return render_template("results.html", title=query, json=json, type=media_type)
 
 
 @app.route("/book/<media_id>", methods=["GET", "POST"])
