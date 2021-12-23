@@ -90,18 +90,16 @@ P01 -- ArRESTed Development
             <h2 class="portfolio-modal-title text-secondary mb-0">Add a Card</h2>
             <!-- Lessons Modal - Text-->
             <br>
-            <div class="input-group">
-              <form method="POST" action="/book">
-                <input type="search" class="form-control rounded" placeholder="Book Search" aria-label="Search"
-                aria-describedby="search-addon" name="searchB">
-                <input type="submit" value="search" class="btn btn-primary"></input>
-              </form>
-            </div>
-            <br><br>
-            <div class="input-group">
-              <form  method="POST" action="/movie">
-                <input type="search" class="form-control rounded" placeholder="Movie Search" aria-label="Search"
-                aria-describedby="search-addon" name="searchM">
+            <div class="input-group container">
+              <form method="POST" action="/search" class="row">
+                <input type="search" class="form-control rounded" placeholder="Search by Title" aria-label="Search"
+                  aria-describedby="search-addon" name="search-query">
+                <div class="col m-2">
+                  <input type="radio" name="media-type" id="type-0" value="book" checked>
+                  <label for="type-0">Book</label>
+                  <input type="radio" name="media-type" id="type-1" value="movie">
+                  <label for="type-1">Movie</label>
+                </div>
                 <input type="submit" value="search" class="btn btn-primary"></input>
               </form>
             </div>
