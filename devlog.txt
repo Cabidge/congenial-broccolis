@@ -69,6 +69,10 @@ Finished results page to display correct cards after searching.
 wenhaoD -- 2021-12-20 09:21
 Fixed bugs with search_for_books where books had no cover or author.
 
+lieselW - 2021-12-20 09:38
+Worked with Austin to think abouy ways to add entries
+Task document
+
 austinN -- 2021-12-20 22:19
 Added database functions that help to add book/movie entries to a user's personal library, as well as for display.
 Started trying to find a way to add entries and then redirect user back to home, not functioning yet.
@@ -76,6 +80,9 @@ Started trying to find a way to add entries and then redirect user back to home,
 wenhaoD -- 2021-12-21 09:24
 Added error handling for apis.
 Implemented fetch_entries database function -- needs further testing.
+
+lieselW -- 2021-12-21 09:30
+Made team task document
 
 rachelX -- 2021-12-21 12:34
 Started routes for individual media and allow adding to library of specific media.
@@ -93,5 +100,12 @@ Created is_in_library function and added check in add_to_library.
 rachelX -- 2021-12-22 09:26
 Edited templates with navigation bar.
 
+lieselW - 2021-12-22 09:35
+Worked on team task document
+Worked on linking HTML and CSS pages, and adding styling to HTML page
+
 rachelX -- 2021-12-22 10:37
 Finished home page to display user's library.
+
+lieselW - 2021-12-22 09:40
+Worked on linking HTML and CSS pages, and adding styling to CSS page
