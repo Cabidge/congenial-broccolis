@@ -33,6 +33,7 @@ def login():
 	username = request.form["username"]
 	password = request.form["password"]
 
+	#this may not be needed because bootstrap checks it for us
 	if username.strip() == "" or password.strip() == "":
 		return render_template("login.html", explain = "Username/Password cannot be blank")
 
