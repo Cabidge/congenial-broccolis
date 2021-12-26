@@ -53,6 +53,7 @@ def ol_search(title, limit=12):
 def nyt_search(expression, type):
 	"""
 	Searches for reviews based on type movies or books.
+	Returns a dictionary with a summary and link to the review.
 	"""
 	title = ""
 	for c in expression:
@@ -60,11 +61,21 @@ def nyt_search(expression, type):
 			title += "+"
 		else:
 			title += c
-	page = ""
+
+	reviews = {}
 	if type == "book":
 		page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?title={title}&api-key={keys['nyt']}") #f string to add key to the url
+		url_dict = json.loads(page.read())
+		if len(url_dict) == 0:
+			return {}
+		reviews["link"] = url_dict["results"][0]["url"]
+		reviews["summary"] = url_dict["results"][0]["summary"]
 	else:
 		page = request.urlopen(f"https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={title}&api-key={keys['nyt']}")
-	url_dict = json.loads(page.read())
-	return url_dict
-#print(nyt_search("titanic", "movie")["results"][0]["link"]["url"])
+		url_dict = json.loads(page.read())
+		if len(url_dict) == 0:
+			return {}
+		reviews["link"] = url_dict["results"][0]["link"]["url"]
+		reviews["summary"] = url_dict["results"][0]["summary_short"]
+	return reviews
+#print(nyt_search("it ends with us", "book"))
