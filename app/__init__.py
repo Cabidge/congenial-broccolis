@@ -126,6 +126,24 @@ def display_movie(media_id):
 		return redirect("/")
 
 
+@app.route("/update", methods=["POST"])
+def update_library():
+	table = {}
+	for key, value in request.form.items():
+		media_type, media_id = key.split("-")
+		media_id = int(media_id)
+
+		complete = value == "on"
+		table[(media_type, media_id)] = complete
+
+	completion_statuses = []
+	for (media_type, media_id), complete in table.items():
+		completion_statuses.append((media_type, media_id, complete))
+
+	database.update_completion(session["user_id"], completion_statuses)
+	return redirect("/")
+
+
 if __name__ == "__main__":
 	app.debug = True
 	app.run()

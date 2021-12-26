@@ -44,7 +44,7 @@ P01 -- ArRESTed Development
 
     <!-- Cards for the library -->
     <center class="container justify-content-center">
-      <form class="row align-items-start">
+      <form class="row align-items-start" action="/update" method="POST">
         <div class="row">
           <div class="col">
             <input class="btn btn-primary mb-4" type="submit" value="Save Completion">
@@ -66,8 +66,16 @@ P01 -- ArRESTed Development
             </div>
 
             <div class="card-footer">
-              <input type="checkbox" class="btn-check" id="finished-{{entry.id}}" {% if entry.complete %} checked {% endif %}>
-              <label class="btn btn-outline-success" for="finished-{{entry.id}}">Finished</label>
+              <!-- Used to report unchecked checkboxes in the request -->
+              <input type="hidden" value="exists" name="{{entry.type}}-0{{entry.id}}">
+
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="finished-{{entry.type}}-{{entry.id}}"
+                name="{{entry.type}}-{{entry.id}}"
+                {% if entry.complete == 1 %} checked {% endif %}>
+              <label class="btn btn-outline-success" for="finished-{{entry.type}}-{{entry.id}}">Finished</label>
             </div>
 
           </div>

@@ -108,3 +108,6 @@ Finished up nyt_search to have link and summary returned. But, weird big when se
 wenhaoD -- 2021-12-26 11:39
 Added toggleable completion statuses to homepage cards.
 Doesn't update database yet.
+
+wenhaoD -- 2021-12-26 14:11
+Finished integrating completion toggling with server and database.

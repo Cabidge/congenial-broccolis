@@ -242,15 +242,17 @@ def fetch_entries(user_id):
 	c.execute("""
 		SELECT media_id
 		     , type
+			 , complete
 		FROM   entries
 		WHERE  user_id = ? """, (user_id,))
 
 	entries_data = c.fetchall()
 
 	entries = []
-	for media_id, media_type in entries_data:
+	for media_id, media_type, complete in entries_data:
 		media = fetch_media(media_id, media_type)
 		if media is not None:
+			media["complete"] = complete
 			entries.append(media)
 
 	db.commit()
@@ -296,3 +298,23 @@ def add_to_library(media_type, user_id, media_id):
 	db.close()
 
 	return True
+
+
+def update_completion(user_id, completion_statuses):
+	"""
+	Updates the complete column for every entry with the given user_id.
+	completion_statuses is a list of tuples with the format (media_type, media_id, complete)
+	"""
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	for media_type, media_id, complete in completion_statuses:
+		c.execute("""
+			UPDATE entries
+			   SET complete = ?
+			 WHERE user_id = ?
+			   AND type = ?
+			   AND media_id = ?""", (complete, user_id, media_type, media_id))
+
+	db.commit()
+	db.close()
