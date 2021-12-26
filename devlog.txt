@@ -104,3 +104,7 @@ Worked on linking HTML and CSS pages, and added code to CSS file.
 
 rachelX -- 2021-12-25 19:48
 Finished up nyt_search to have link and summary returned. But, weird big when search is blank.
+
+wenhaoD -- 2021-12-26 11:39
+Added toggleable completion statuses to homepage cards.
+Doesn't update database yet.
