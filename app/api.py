@@ -92,6 +92,6 @@ def google_search(expression):
 	url_dict = json.loads(page.read())
 	info = {}
 	info["summary"] = url_dict["items"][0]["volumeInfo"]["description"]
-	info["pages"] = url_dict["items"][0]["volumeInfo"]["pageCount"]
+	info["pages"] = str(url_dict["items"][0]["volumeInfo"]["pageCount"]) + " pages"
 	return info
 #print(google_search("it ends with us"))
