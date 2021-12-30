@@ -103,7 +103,7 @@ lieselW -- 2021-12-22 09:40
 Worked on linking HTML and CSS pages, and added code to CSS file.
 
 rachelX -- 2021-12-25 19:48
-Finished up nyt_search to have link and summary returned. But, weird big when search is blank.
+Finished up nyt_search to have link and summary returned. But, weird bug when search is blank.
 
 wenhaoD -- 2021-12-26 11:39
 Added toggleable completion statuses to homepage cards.
@@ -117,3 +117,6 @@ Created method for searching through Google Books API.
 
 rachelX -- 2021-12-30 13:54
 Finished implementing extra information for a book.
+
+rachelX -- 2021-12-30 14:18
+Finished implementing extra information for a movie and might have fixed bug for blank nyt search.

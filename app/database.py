@@ -15,7 +15,9 @@ cur.execute("""
 	CREATE TABLE IF NOT EXISTS movies(
 	  id INTEGER PRIMARY KEY,
 	  title TEXT,
-	  cover_url TEXT)""")
+	  cover_url TEXT,
+	  summary TEXT,
+	  link TEXT)""")
 
 cur.execute("""
 	CREATE TABLE IF NOT EXISTS books(
@@ -153,6 +155,14 @@ def search_for_movies(title):
 		movie["id"] = int(result["id"][2:])
 		movie["title"] = f"{result['title']} {result['description']}"
 		movie["cover_url"] = result["image"]
+		nyt_dict = api.nyt_search(result["title"], "movie")
+		if len(nyt_dict) != 0:
+			movie["summary"] = nyt_dict["summary"]
+			movie["link"] = nyt_dict["link"]
+		else:
+			movie["summary"] = ""
+			movie["link"] = ""
+
 		movies.append(movie)
 
 	db = sqlite3.connect(DB_FILE)
@@ -160,8 +170,8 @@ def search_for_movies(title):
 
 	for movie in movies:
 		c.execute("""
-			INSERT OR REPLACE INTO movies(id, title, cover_url)
-				VALUES(:id, :title, :cover_url)""", movie)
+			INSERT OR REPLACE INTO movies(id, title, cover_url, summary, link)
+				VALUES(:id, :title, :cover_url, :summary, :link)""", movie)
 
 	db.commit()
 	db.close()

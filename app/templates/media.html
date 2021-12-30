@@ -58,8 +58,11 @@ P01 -- ArRESTed Development
 
         <div class="col">
           <p>{{entry.pages}}</p>
+          {% if entry.link != "" %}
+            <a href="{{entry.link}}" target="_blank">Movie Review</a>
+          {% endif %}
           <p>{{entry.summary}}</p>
-          {% if entry.pages == "" and entry.summary == ""%}
+          {% if entry.pages == "" and entry.summary == "" %}
             <p style="font-size: 30px">Sorry! There's no more to read :( </p>
           {% endif %}
 
