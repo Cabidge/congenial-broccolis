@@ -22,7 +22,9 @@ cur.execute("""
 	  id INTEGER PRIMARY KEY,
 	  title TEXT,
 	  cover_url TEXT,
-	  author TEXT)""")
+	  author TEXT,
+	  summary TEXT,
+	  pages TEXT)""")
 
 cur.execute("""
 	CREATE TABLE IF NOT EXISTS entries(
@@ -213,6 +215,13 @@ def search_for_books(title):
 			book["author"] = join_nouns(result["author_name"])
 		else:
 			book["author"] = "No Author"
+		google_dict = api.google_search(result["title"])
+		if len(google_dict) != 0:
+			book["summary"] = google_dict["summary"]
+			book["pages"] = google_dict["pages"]
+		else:
+			book["summary"] = ""
+			book["pages"] = ""
 
 		books.append(book)
 
@@ -221,8 +230,8 @@ def search_for_books(title):
 
 	for book in books:
 		c.execute("""
-			INSERT OR REPLACE INTO books(id, title, cover_url, author)
-				VALUES(:id, :title, :cover_url, :author)""", book)
+			INSERT OR REPLACE INTO books(id, title, cover_url, author, summary, pages)
+				VALUES(:id, :title, :cover_url, :author, :summary, :pages)""", book)
 
 	db.commit()
 	db.close()

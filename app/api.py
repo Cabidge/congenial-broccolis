@@ -19,6 +19,11 @@ encode_query = urllib.parse.quote
 
 
 def imdb_search(expression):
+	"""
+	Searches for movies on IMBD.
+	Returns the json response.
+	https://imdb-api.com/
+	"""
 	# Makes the expression safe to put into query string
 	expression = encode_query(expression)
 
@@ -86,12 +91,16 @@ def google_search(expression):
 	try:
 		page = request.urlopen(f"https://www.googleapis.com/books/v1/volumes?q={title}&key={keys['google']}") #f string to add key to the url
 	except (HTTPError, URLError) as e:
-		print("Error ocurred fetching from api", e)
+		print("Error ocurred fetching from google api", e)
 		return None
 
 	url_dict = json.loads(page.read())
 	info = {}
-	info["summary"] = url_dict["items"][0]["volumeInfo"]["description"]
-	info["pages"] = str(url_dict["items"][0]["volumeInfo"]["pageCount"]) + " pages"
+	try:
+		info["summary"] = url_dict["items"][0]["volumeInfo"]["description"]
+		info["pages"] = str(url_dict["items"][0]["volumeInfo"]["pageCount"]) + " pages"
+	except Exception as e:
+		print("Error ocurred fetching from google json", e)
+		return info
 	return info
 #print(google_search("it ends with us"))
