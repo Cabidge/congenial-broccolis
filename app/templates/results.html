@@ -54,19 +54,6 @@ P01 -- ArRESTed Development
               <h6 class="card-subtitle mb-2 text-muted">{{entry.author}}</h6>
             </div>
             <img style="height: 25rem; object-fit: contain;" src="{{entry.cover_url}}" class="card-img-top"> <!-- Cover Image -->
-            <div class="card-body">
-              <a href="#" class="card-link"></a>
-              <p class="card-text">{{entry.summary}}</p>
-            </div>
-
-            <!-- Some input stuff to add to library -->
-            <!--
-            <div class="input-group">
-              <form  method="POST">
-                <input type="submit" value="Add to Library" href="/add_media" name="add" class="btn btn-primary"></input>
-              </form>
-            </div>
-            -->
             <a href="/{{type}}/{{entry.id}}" style="text-decoration: none; color: white;"><button class="btn btn-primary">Read More</button></a>
 
           </div>
