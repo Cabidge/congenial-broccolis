@@ -58,7 +58,7 @@ P01 -- ArRESTed Development
 
         <div class="col">
           <p>{{entry.pages}}</p>
-          {% if entry.link != "" %}
+          {% if entry.type == "movie" %}
             <a href="{{entry.link}}" target="_blank">Movie Review</a>
           {% endif %}
           <p>{{entry.summary}}</p>
