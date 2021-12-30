@@ -111,3 +111,6 @@ Doesn't update database yet.
 
 wenhaoD -- 2021-12-26 14:11
 Finished integrating completion toggling with server and database.
+
+rachelX -- 2021-12-30 01:13
+Created method for searching through Google Books API.
