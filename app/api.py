@@ -64,16 +64,24 @@ def nyt_search(expression, type):
 
 	reviews = {}
 	if type == "book":
-		page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?title={title}&api-key={keys['nyt']}") #f string to add key to the url
+		try:
+			page = request.urlopen(f"https://api.nytimes.com/svc/books/v3/reviews.json?title={title}&api-key={keys['nyt']}") #f string to add key to the url
+		except (HTTPError, URLError) as e:
+			print("Error ocurred fetching from nyt api", e)
+			return reviews
 		url_dict = json.loads(page.read())
-		if len(url_dict) == 0:
+		if len(url_dict["results"]) == 0:
 			return {}
 		reviews["link"] = url_dict["results"][0]["url"]
 		reviews["summary"] = url_dict["results"][0]["summary"]
 	else:
-		page = request.urlopen(f"https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={title}&api-key={keys['nyt']}")
+		try:
+			page = request.urlopen(f"https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={title}&api-key={keys['nyt']}")
+		except (HTTPError, URLError) as e:
+			print("Error ocurred fetching from nyt api", e)
+			return reviews
 		url_dict = json.loads(page.read())
-		if len(url_dict) == 0:
+		if len(url_dict["results"]) == 0:
 			return {}
 		reviews["link"] = url_dict["results"][0]["link"]["url"]
 		reviews["summary"] = url_dict["results"][0]["summary_short"]
