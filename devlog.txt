@@ -114,3 +114,6 @@ Finished integrating completion toggling with server and database.
 
 rachelX -- 2021-12-30 01:13
 Created method for searching through Google Books API.
+
+rachelX -- 2021-12-30 13:54
+Finished implementing extra information for a book.

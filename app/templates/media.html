@@ -56,6 +56,9 @@ P01 -- ArRESTed Development
         <div class="col">
           <p>{{entry.pages}}</p>
           <p>{{entry.summary}}</p>
+          {% if entry.pages == "" and entry.summary == ""%}
+            <p style="font-size: 30px">Sorry! There's no more to read :( </p>
+          {% endif %}
 
           <!-- Some input stuff to add to library -->
           <div class="input-group">
