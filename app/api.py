@@ -55,12 +55,7 @@ def nyt_search(expression, type):
 	Searches for reviews based on type movies or books.
 	Returns a dictionary with a summary and link to the review.
 	"""
-	title = ""
-	for c in expression:
-		if c == " ":
-			title += "+"
-		else:
-			title += c
+	title = encode_query(expression)
 
 	reviews = {}
 	if type == "book":
@@ -79,3 +74,24 @@ def nyt_search(expression, type):
 		reviews["summary"] = url_dict["results"][0]["summary_short"]
 	return reviews
 #print(nyt_search("it ends with us", "book"))
+
+
+def google_search(expression):
+	"""
+	Searches for books using Google Books API.
+	Returns a dictionary with the summary and pages of a book.
+	"""
+	title = encode_query(expression)
+
+	try:
+		page = request.urlopen(f"https://www.googleapis.com/books/v1/volumes?q={title}&key={keys['google']}") #f string to add key to the url
+	except (HTTPError, URLError) as e:
+		print("Error ocurred fetching from api", e)
+		return None
+
+	url_dict = json.loads(page.read())
+	info = {}
+	info["summary"] = url_dict["items"][0]["volumeInfo"]["description"]
+	info["pages"] = url_dict["items"][0]["volumeInfo"]["pageCount"]
+	return info
+#print(google_search("it ends with us"))
