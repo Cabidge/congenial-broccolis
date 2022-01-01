@@ -157,7 +157,7 @@ def search_for_movies(title):
 		movie["title"] = f"{result['title']} {result['description']}"
 		movie["cover_url"] = result["image"]
 		nyt_dict = api.nyt_search(result["title"], "movie")
-		if len(nyt_dict) != 0: #if there are no results
+		if len(nyt_dict) != 0: #if there are results
 			movie["summary"] = nyt_dict["summary"]
 			movie["link"] = nyt_dict["link"]
 		else:
