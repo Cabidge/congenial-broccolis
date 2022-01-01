@@ -69,22 +69,46 @@ def nyt_search(expression, type):
 		except (HTTPError, URLError) as e:
 			print("Error ocurred fetching from nyt api", e)
 			return reviews
+
 		url_dict = json.loads(page.read())
 		if url_dict["results"] == None or len(url_dict["results"]) == 0:
 			return {}
-		reviews["link"] = url_dict["results"][0]["url"]
-		reviews["summary"] = url_dict["results"][0]["summary"]
+		try:
+			reviews["summary"] = url_dict["results"][0]["summary"]
+		except Exception as e:
+			reviews["summary"] = ""
+			reviews["link"] = ""
+			print("Error ocurred fetching from SUMMARY nyt api", e)
+			return reviews
+		try:
+			reviews["link"] = url_dict["results"][0]["url"]
+		except Exception as e:
+			reviews["link"] = ""
+			print("Error ocurred fetching from LINK nyt api", e)
+			return reviews
 	else:
 		try:
 			page = request.urlopen(f"https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={title}&api-key={keys['nyt']}")
 		except (HTTPError, URLError) as e:
 			print("Error ocurred fetching from nyt api", e)
 			return reviews
+
 		url_dict = json.loads(page.read())
 		if url_dict["results"] == None or len(url_dict["results"]) == 0: #if there are not nyt search results
 			return {}
-		reviews["link"] = url_dict["results"][0]["link"]["url"]
-		reviews["summary"] = url_dict["results"][0]["summary_short"]
+		try:
+			reviews["summary"] = url_dict["results"][0]["summary_short"]
+		except Exception as e:
+			reviews["summary"] = ""
+			reviews["link"] = ""
+			print("Error ocurred fetching from SUMMARY nyt api", e)
+			return reviews
+		try:
+			reviews["link"] = url_dict["results"][0]["link"]["url"]
+		except Exception as e:
+			reviews["link"] = ""
+			print("Error ocurred fetching from LINK nyt api", e)
+			return reviews
 	return reviews
 #print(nyt_search("pale fire", "book"))
 
@@ -106,9 +130,16 @@ def google_search(expression):
 	info = {}
 	try:
 		info["summary"] = url_dict["items"][0]["volumeInfo"]["description"]
+	except Exception as e:
+		info["summary"] = ""
+		info["pages"] = ""
+		print("Error ocurred fetching SUMMARY from google json", e)
+		return info
+	try:
 		info["pages"] = str(url_dict["items"][0]["volumeInfo"]["pageCount"]) + " pages"
 	except Exception as e:
-		print("Error ocurred fetching from google json", e)
+		info["pages"] = ""
+		print("Error ocurred fetching PAGES from google json", e)
 		return info
 	return info
 #print(google_search("it ends with us"))
