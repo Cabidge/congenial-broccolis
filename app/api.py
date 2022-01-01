@@ -70,7 +70,7 @@ def nyt_search(expression, type):
 			print("Error ocurred fetching from nyt api", e)
 			return reviews
 		url_dict = json.loads(page.read())
-		if len(url_dict["results"]) == 0:
+		if url_dict["results"] == None or len(url_dict["results"]) == 0:
 			return {}
 		reviews["link"] = url_dict["results"][0]["url"]
 		reviews["summary"] = url_dict["results"][0]["summary"]
@@ -81,12 +81,12 @@ def nyt_search(expression, type):
 			print("Error ocurred fetching from nyt api", e)
 			return reviews
 		url_dict = json.loads(page.read())
-		if len(url_dict["results"]) == 0:
+		if url_dict["results"] == None or len(url_dict["results"]) == 0: #if there are not nyt search results
 			return {}
 		reviews["link"] = url_dict["results"][0]["link"]["url"]
 		reviews["summary"] = url_dict["results"][0]["summary_short"]
 	return reviews
-#print(nyt_search("it ends with us", "book"))
+#print(nyt_search("pale fire", "book"))
 
 
 def google_search(expression):

@@ -151,12 +151,13 @@ def search_for_movies(title):
 	res = json["results"]
 	movies = []
 	for result in res:
+		#print(result["title"])
 		movie = {}
 		movie["id"] = int(result["id"][2:])
 		movie["title"] = f"{result['title']} {result['description']}"
 		movie["cover_url"] = result["image"]
 		nyt_dict = api.nyt_search(result["title"], "movie")
-		if len(nyt_dict) != 0:
+		if len(nyt_dict) != 0: #if there are no results
 			movie["summary"] = nyt_dict["summary"]
 			movie["link"] = nyt_dict["link"]
 		else:
