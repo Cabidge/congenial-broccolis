@@ -255,7 +255,6 @@ def fetch_entries(user_id):
 	Returns a list of dictionaries in the same format as fetch_media,
 	all of which come from entries made by the user with the given user_id.
 	"""
-
 	db = sqlite3.connect(DB_FILE)
 	c = db.cursor()
 

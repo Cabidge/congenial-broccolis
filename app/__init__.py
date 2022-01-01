@@ -11,11 +11,17 @@ app = Flask(__name__)
 app.secret_key = "foo"
 
 def logged_in():
+	"""
+	Returns True if the user is in session.
+	"""
 	return "user" in session
 
 
 @app.route("/")
 def home():
+	"""
+	Displays user's library if they're logged in.
+	"""
 	if logged_in():
 		entries = database.fetch_entries(session["user_id"]) #users' library
 		return render_template("home.html", user=session["user"], library=entries)
@@ -24,6 +30,10 @@ def home():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+	"""
+	Retrieves user login inputs and checks it against the "users" database table.
+	Brings user to home page after successful login.
+	"""
 	if logged_in():
 		return redirect("/")
 
@@ -50,6 +60,9 @@ def login():
 
 @app.route("/logout")
 def logout():
+	"""
+	Removes user from session.
+	"""
 	if logged_in():
 		session.pop("user")
 		session.pop("user_id")
@@ -58,6 +71,11 @@ def logout():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
+	"""
+	Retrieves user inputs from signup page.
+	Checks it against the database to make sure the information is unique.
+	Adds information to the "users" database table.
+	"""
 	if logged_in():
 		return redirect("/")
 
@@ -85,6 +103,11 @@ def signup():
 
 @app.route("/search", methods=["POST"])
 def search():
+	"""
+	Checks if user wants to search for a book or movie from Modal form.
+	Retrieves title from user input and stores the results of the API search into the database.
+	Returns the results of the search.
+	"""
 	if not logged_in():
 		return redirect("/login")
 
@@ -104,6 +127,10 @@ def search():
 
 @app.route("/book/<media_id>", methods=["GET", "POST"])
 def display_book(media_id):
+	"""
+	Creates route to a specific book based its unique ID.
+	Returns a specific page about the book.
+	"""
 	if not logged_in():
 		return redirect("/login")
 	if request.method == "GET":
@@ -116,6 +143,10 @@ def display_book(media_id):
 
 @app.route("/movie/<media_id>", methods=["GET", "POST"])
 def display_movie(media_id):
+	"""
+	Creates route to a specific movie based its unique ID.
+	Returns a specific page about the movie.
+	"""
 	if not logged_in():
 		return redirect("/login")
 	if request.method == "GET":
