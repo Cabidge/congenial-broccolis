@@ -121,3 +121,6 @@ Finished implementing extra information for a book.
 rachelX -- 2021-12-30 14:18
 Finished implementing extra information for a movie and might have fixed bug for blank nyt search.
 Weird bug when in nyt search for NoneType.
+
+rachelX -- 2021-12-31 22:48
+Fixed bug when nyt has no results.
