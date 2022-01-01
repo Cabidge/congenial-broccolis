@@ -50,7 +50,7 @@ def login():
 	# Verify this user and password exists
 	user_id = database.fetch_user_id(username, password)
 	if user_id is None:
-		return render_template("login.html", explain = "Password/Username is incorrect.")
+		return render_template("login.html", explain = "Username or Password is incorrect")
 
 	# Adds user and user id to session if all is well
 	session["user"] = database.fetch_username(user_id)

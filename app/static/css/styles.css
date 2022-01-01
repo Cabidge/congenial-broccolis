@@ -7,19 +7,34 @@ P01 -- ArRESTed Development
 
 /* COLOR PALLETE:  https://coolors.co/7400b8-6930c3-5e60ce-5390d9-4ea8de-48bfe3-56cfe1-64dfdf-72efdd-80ffdb*/
 
+:root {
+   --primary: #5f43b2; /* studio color */
+   --secondary: #3a3153; /* martinique */
+   --black: #010101;
+   --white: #fefdfd;
+   --dirty_white: #f8fafb;
+   --gray: #b1aebb;
+}
+
 html,body{
-background-image: url('https://kawaii.kawaii.at/images/product_images/big_images/blue-ocean-waves-pattern-fabric-ocean-and-nature-themed-cotton-from-the-USA-249965-1.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
+  background-color: var(--dirty_white);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
 }
 
 .container{
-height: 100%;
-align-content: center;
+  height: 100%;
+  align-content: center;
 }
 
-.card{
-
+.btn-primary {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.btn-primary:hover {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  opacity: 0.8;
 }
