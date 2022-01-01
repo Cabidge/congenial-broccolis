@@ -125,5 +125,8 @@ Weird bug when in nyt search for NoneType.
 rachelX -- 2021-12-31 22:48
 Fixed bug when nyt has no results.
 
+lieselW -- 2021-12-31 23:00
+Styling to login page
+
 rachelX -- 2022-01-01 01:27
 Added try except block to handle errors in searching.
