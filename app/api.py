@@ -4,12 +4,12 @@ from urllib.error import HTTPError, URLError
 import json
 
 keys = {}
-# keys.txt is a file containing all of the api keys
-with open("keys.txt") as f:
-	for line in f:
-		# List destructuring
-		[k, v] = line.rstrip().split("=")
-		keys[k] = v
+for i in range(3):
+	with open("../keys/key_api" + str(i) + ".txt") as f:
+		for line in f:
+			# List destructuring
+			[k, v] = line.rstrip().split("=")
+			keys[k] = v
 
 imdb_endpoint = "https://imdb-api.com/en/API"
 ol_endpoint = "http://openlibrary.org"
