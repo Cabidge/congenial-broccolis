@@ -132,4 +132,7 @@ rachelX -- 2022-01-01 01:27
 Added try except block to handle errors in searching.
 
 lieselW -- 2022-01-01 10:00
-Add new stylesheet, finish login and register page styling
+Add new stylesheet, finish login and register page styling.
+
+rachelX -- 2022-01-02 00:55
+Added a feature for users to remove from library.
