@@ -3,10 +3,14 @@ SoftDev
 P01 -- ArRESTed Development
 2021-12-09
 
-rachelX -- 2021-12-09 19:40
 REVISIONS FOR DESIGN DOC:
+2021-12-09 19:40
 Added more detailed descriptions for components and purpose.
 Updated site map to better show the linkages of pages of the website.
+
+2022-01-02 01:10
+Updated books and movies database tables.
+Updated sit map
 
 wenhaoD -- 2021-12-13 09:23
 Started work on database module.
