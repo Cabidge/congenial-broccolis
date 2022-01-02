@@ -319,6 +319,29 @@ def add_to_library(media_type, user_id, media_id):
 	return True
 
 
+def remove_from_library(media_type, user_id, media_id):
+	"""
+	Removes entry to entries table with its corresponding information refering to a specific user.
+	This removes a book or movie to a user's library
+	"""
+	if is_in_library(media_type, user_id, media_id) == False:
+		return False
+
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	c.execute("""
+		DELETE FROM entries
+		   WHERE type = ?
+		   AND user_id = ?
+		   AND media_id = ?""", (media_type, user_id, media_id))
+
+	db.commit()
+	db.close()
+
+	return True
+
+
 def update_completion(user_id, completion_statuses):
 	"""
 	Updates the complete column for every entry with the given user_id.

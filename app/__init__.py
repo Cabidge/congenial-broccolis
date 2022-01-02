@@ -135,9 +135,14 @@ def display_book(media_id):
 		return redirect("/login")
 	if request.method == "GET":
 		book = database.fetch_media(media_id, "book")
-		return render_template("media.html", entry=book)
+		if database.is_in_library("book", session["user_id"], media_id):
+			return render_template("media.html", entry=book, add=False) #media can be removed
+		return render_template("media.html", entry=book, add=True)
 	elif request.method == "POST":
-		print(database.add_to_library("book", session["user_id"], media_id))
+		if database.is_in_library("book", session["user_id"], media_id):
+			print(database.remove_from_library("book", session["user_id"], media_id))
+		else:
+			print(database.add_to_library("book", session["user_id"], media_id))
 		return redirect("/")
 
 
@@ -151,9 +156,14 @@ def display_movie(media_id):
 		return redirect("/login")
 	if request.method == "GET":
 		movie = database.fetch_media(media_id, "movie")
-		return render_template("media.html", entry=movie)
+		if database.is_in_library("movie", session["user_id"], media_id):
+			return render_template("media.html", entry=movie, add=False) #media can be removed
+		return render_template("media.html", entry=movie, add=True)
 	elif request.method == "POST":
-		print(database.add_to_library("movie", session["user_id"], media_id))
+		if database.is_in_library("movie", session["user_id"], media_id):
+			print(database.remove_from_library("movie", session["user_id"], media_id))
+		else:
+			print(database.add_to_library("movie", session["user_id"], media_id))
 		return redirect("/")
 
 
