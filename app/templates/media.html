@@ -42,7 +42,7 @@ P01 -- ArRESTed Development
 
     <!-- Heading -->
     <center>
-      <h1><i>{{entry.title}}</i></h1>
+      <h1><b>{{entry.title}}</b></h1>
       <cite title="Source Title" style="font-size:25px;">{{entry.author}}</cite><br>
     </center>
     <br>
@@ -58,13 +58,20 @@ P01 -- ArRESTed Development
         </center>
 
         <div class="col">
-          <p>{{entry.pages}}</p>
+          <!-- movie info -->
           {% if entry.type == "movie" %}
             {% if entry.link != "" %}
-              <a style="font-size: 30px" href="{{entry.link}}" target="_blank">Movie Review</a>
+              <a style="font-size: 30px;" href="{{entry.link}}" target="_blank">Movie Review</a>
             {% endif %}
+            <!-- bigger font for movie summaries cuz they're short -->
+            <p style="font-size: 30px;">{{entry.summary}}</p>
           {% endif %}
-          <p style="font-size: 30px">{{entry.summary}}</p>
+
+          <!-- book info -->
+          <p style="font-size: 20px;">{{entry.pages}}</p>
+          {% if entry.type == "book" %}
+            <p>{{entry.summary}}</p>
+          {% endif %}
           {% if entry.summary == "" %}
             <p style="font-size: 30px">Sorry! There's no more to read :( </p>
           {% endif %}
@@ -73,9 +80,9 @@ P01 -- ArRESTed Development
           <div class="input-group">
             <form method="POST" action="/{{entry.type}}/{{entry.id}}">
               {% if add %}
-                <input name="add" type="submit" value="Add to Library" class="btn btn-primary"></input>
+                <input name="add" type="submit" value="Add to Library" class="btn btn-purple"></input>
               {% else %}
-                <input name="add" type="submit" value="Remove from Library" class="btn btn-primary"></input>
+                <input name="add" type="submit" value="Remove from Library" class="btn btn-purple"></input>
               {% endif %}
             </form>
           </div>

@@ -32,16 +32,17 @@ body{
 }
 
 .card{
-    background-color: #bcb6cf !important; */
-    height: 50%;
-    width: 35%;
-    min-width:  500px !important;
-    /* centering */
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+  padding-top: 15px;
+  background-color: #e7e9eb !important; */
+  height: 50%;
+  width: 35%;
+  min-width:  500px !important;
+  /* centering */
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .card-title {
