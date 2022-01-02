@@ -130,3 +130,6 @@ Styling to login page
 
 rachelX -- 2022-01-01 01:27
 Added try except block to handle errors in searching.
+
+lieselW -- 2022-01-01 10:00
+Add new stylesheet, finish login and register page styling
