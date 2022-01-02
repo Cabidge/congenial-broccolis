@@ -16,35 +16,40 @@ P01 -- ArRESTed Development
    --gray: #b1aebb;
 }
 
-html,body{
-  background-image: url('https://images.creativemarket.com/0.1.0/ps/7195022/1820/1213/m1/fpnw/wm1/xwb9oarfuev6zb447edps3fveyrb70ccwfjokoi72phum25sfahqfycut0dgo83f-.jpg?1571959749&s=14070a07f1d463a912151fd6345f748d');
+body{
+  background-color: #F5F5F5;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100%;
   font-family: 'Numans', sans-serif;
+  padding-top: 25px;
 }
 
-.container{
+.container {
   height: 100%;
   align-content: center;
 }
 
 .card{
-    background-color: rgba(0, 0, 0, 0.8) !important; */
+    background-color: #bcb6cf !important; */
     height: 50%;
-    margin-top: auto;
-    margin-bottom: auto;
     width: 35%;
-    min-width:  320px !important;
+    min-width:  500px !important;
+    /* centering */
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .card-title {
-  color:  rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .form-label {
-  color:  rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .form-group {
@@ -52,5 +57,5 @@ html,body{
 }
 
 #register, #login {
-  color:  rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 0.8);
 }

@@ -16,7 +16,7 @@ P01 -- ArRESTed Development
    --gray: #b1aebb;
 }
 
-html,body{
+body{
   background-color: var(--dirty_white);
   background-size: cover;
   background-repeat: no-repeat;

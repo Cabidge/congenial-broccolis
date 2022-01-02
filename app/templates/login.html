@@ -18,55 +18,48 @@ P01 -- ArRESTed Development
   </head>
 
   <body>
-    <div class="container d-flex justify-content-center mx-auto align-items-center">
-        <div class="card login-card">
-          <div class="card-body">
-            <center>
-              <h2 class="card-title"> Login </h2>
-            </center>
-            <form method="POST" action="/login">
+    <div class="row align-items-start">
+      <center class="col">
+        <img style="height: 40rem; object-fit: contain;" src="https://i.postimg.cc/Vkw1vSkj/cover.png">
+      </center>
 
-              <br>
-              <div class="form-floating form-group mb-4">
-                <input class="form-control" type="username" placeholder="i can be BIIIG" id = "floatingInput exampleInputUsername1" name = "username" required>
-                <label for="floatingInput exampleInputUsername1 "> username</label>
-              </div>
+      <div class="col">
+        <div class="container d-flex justify-content-center mx-auto align-items-center">
+            <div class="card login-card">
+              <div class="card-body">
+                <center>
+                  <h2 class="card-title"> Login </h2>
+                </center>
 
-              <!-- <div class="mb-3">
-                <label for="exampleInputUsername1" class="">Username</label>
-                <input type="username" class="form-control" id="exampleInputUsername1" Username" name="username" required>
-              </div>
-              THIS IS ORIGINAL USERNAME CODE, I CHANGED IT TO FLOATING -->
+                <form method="POST" action="/login">
+                  <br>
+                  <div class="form-floating form-group mb-4">
+                    <input class="form-control" type="username" placeholder="i can be BIIIG" id = "floatingInput exampleInputUsername1" name = "username" required>
+                    <label for="floatingInput exampleInputUsername1 "> username</label>
+                  </div>
 
-              <div class="form-floating form-group mb-4">
-                <input class="form-control" type="password" placeholder="i can be BIIIG" id = "floatingInput exampleInputPassword1" name = "password" required>
+                  <div class="form-floating form-group mb-4">
+                    <input class="form-control" type="password" placeholder="i can be BIIIG" id = "floatingInput exampleInputPassword1" name = "password" required>
+                    <label for="floatingInput exampleInputPassword1"> password</label>
+                  </div>
+                  <center>
+                    <div class="form-group">
+                      <input type="submit" value="Login" class="btn btn-primary submitbutton" ></input>
+                    </div>
+                  </center>
+                </form>
 
-                <label for="floatingInput exampleInputPassword1"> password</label>
-              </div>
+                <br>
 
-              <!-- <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
-              </div> THIS IS ORIGINAL PASSWORD CODE, CHANGED IT TO BE FLOATING-->
-
-              <center>
                 <div class="form-group">
-                  <input type="submit" value="Login" class="btn btn-primary submitbutton" ></input>
+                 <p style="color:red;">{{ explain }}</p>
+                 <a id="register" href = "/signup"> Don't have an Account? Sign up!</a>
                 </div>
-              </center>
-            </form>
-
-            <br>
-
-            <div class="form-group">
-             <p style="color:red;">{{ explain }}</p>
-             <a id="register" href = "/signup"> Don't have an Account? Sign up!</a>
-            </div>
-
-          </div> <!-- card body -->
-        </div> <!-- card div -->
-    </div> <!-- container div -->
+              </div> <!-- card body -->
+            </div> <!-- card div -->
+          </div> <!-- container div -->
+        </div>
+      </div>
 
     <!-- IGNORE THIS , WAS TRYING SMTH OUT
     <div class = "container">

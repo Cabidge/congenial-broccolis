@@ -53,18 +53,18 @@ P01 -- ArRESTed Development
 
       <div class="row align-items-start">
 
-        <div class="col">
+        <center class="col">
           <img style="height: 35rem; object-fit: contain;" src="{{entry.cover_url}}">
-        </div>
+        </center>
 
         <div class="col">
           <p>{{entry.pages}}</p>
           {% if entry.type == "movie" %}
             {% if entry.link != "" %}
-              <a href="{{entry.link}}" target="_blank">Movie Review</a>
+              <a style="font-size: 30px" href="{{entry.link}}" target="_blank">Movie Review</a>
             {% endif %}
           {% endif %}
-          <p>{{entry.summary}}</p>
+          <p style="font-size: 30px">{{entry.summary}}</p>
           {% if entry.summary == "" %}
             <p style="font-size: 30px">Sorry! There's no more to read :( </p>
           {% endif %}
