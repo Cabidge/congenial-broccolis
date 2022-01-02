@@ -12,6 +12,7 @@ P01 -- ArRESTed Development
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/login.css">
 
     <title>Login</title>
   </head>
@@ -21,29 +22,69 @@ P01 -- ArRESTed Development
         <div class="card login-card">
           <div class="card-body">
             <center>
-              <h2 class="card-title"> Enter your Username and Password </h2>
+              <h2 class="card-title"> Login </h2>
             </center>
             <form method="POST" action="/login">
 
-              <div class="mb-3">
-                <label for="exampleInputUsername1" class="form-label">Username</label>
-                <input type="username" class="form-control" id="exampleInputUsername1" placeholder="Username" name="username" required>
+              <br> 
+              <div class="form-floating form-group mb-4">
+                <input class="form-control" type="username" placeholder="i can be BIIIG" id = "floatingInput exampleInputUsername1" name = "username" required>
+                <label for="floatingInput exampleInputUsername1 "> username</label>
               </div>
 
-              <div class="mb-3">
+              <!-- <div class="mb-3">
+                <label for="exampleInputUsername1" class="">Username</label>
+                <input type="username" class="form-control" id="exampleInputUsername1" Username" name="username" required>
+              </div> 
+              THIS IS ORIGINAL USERNAME CODE, I CHANGED IT TO FLOATING -->
+
+              <div class="form-floating form-group mb-4">
+                <input class="form-control" type="password" placeholder="i can be BIIIG" id = "floatingInput exampleInputPassword1" name = "password" required>
+
+                <label for="floatingInput exampleInputPassword1"> password</label>
+              </div>
+
+              <!-- <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
+
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
-              </div>
+              </div> THIS IS ORIGINAL PASSWORD CODE, CHANGED IT TO BE FLOATING--> 
 
-              <input type="submit" value="Login" class="btn btn-primary"></input>
-
+              <center>
+                <div class="form-group">
+                  <input type="submit" value="Login" class="btn   btn-danger submitbutton" ></input>
+                </div>
+              </center>
             </form>
 
-            <p style="color:red;">{{ explain }}</p>
-            <a id="register" href = "/signup"> Don't have an Account? Sign up!</a>
+            <br>
+
+            <div class="form-group">
+             <p style="color:red;">{{ explain }}</p>
+             <a id="register" href = "/signup"> Don't have an Account? Sign up!</a>
+            </div>
+
           </div> <!-- card body -->
         </div> <!-- card div -->
     </div> <!-- container div -->
+
+    <!-- IGNORE THIS , WAS TRYING SMTH OUT
+    <div class = "container">
+      <center>
+        <div class="mb-3">
+                <label for="exampleInputUsername1" class="">Username</label>
+                <input type="username" class="form-control" id="exampleInputUsername1" Username" name="username" required>
+          </div> 
+          <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
+              </div>
+
+      </center>
+    </div>
+    --> 
   </body>
 
 </html>
+

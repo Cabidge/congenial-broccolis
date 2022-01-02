@@ -1,0 +1,49 @@
+/*
+Congenial Broccolis: Wen Hao Dong (Jal Hordan), Austin Ngan (Gerald), Liesel Wong (King Hagrid), Rachel Xiao (Mooana)
+SoftDev
+P01 -- ArRESTed Development
+2021-12-10 */
+
+
+/* COLOR PALLETE:  https://coolors.co/7400b8-6930c3-5e60ce-5390d9-4ea8de-48bfe3-56cfe1-64dfdf-72efdd-80ffdb*/
+
+
+html,body{
+  background-image: url('https://images.creativemarket.com/0.1.0/ps/7195022/1820/1213/m1/fpnw/wm1/xwb9oarfuev6zb447edps3fveyrb70ccwfjokoi72phum25sfahqfycut0dgo83f-.jpg?1571959749&s=14070a07f1d463a912151fd6345f748d');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+}
+
+.container{
+  height: 100%;
+  align-content: center;
+}
+
+.card{
+    background-color: rgba(0, 0, 0, 0.8) !important; */
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 35%;
+    min-width:  320px !important;
+}
+
+.card-title {
+  color:  rgba(255, 255, 255, 1);
+}
+
+.form-label {
+  color:  rgba(255, 255, 255, 1);
+}
+
+.form-group {
+  margin: 1rem;
+}
+
+#register, #login {
+  color:  rgba(255, 255, 255, 1);
+}
+
