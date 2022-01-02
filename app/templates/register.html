@@ -16,14 +16,14 @@ P01 -- ArRESTed Development
     <title>Signup</title>
   </head>
   <body>
-    <div class="container d-flex justify-content-center mx-auto align-items-center"> 
+    <div class="container d-flex justify-content-center mx-auto align-items-center">
       <div class="card login-card">
         <div class="card-body">
           <center>
-            <h2 class="card-title"> Login </h2>
+            <h2 class="card-title"> Register </h2>
           </center>
           <form method="POST" action="/signup">
-            <br> 
+            <br>
             <div class="form-floating form-group mb-4">
               <input class="form-control" type="username" placeholder="i can be BIIIG" id="exampleInputUsername1 floatingInput" name="newusername" aria-describedby="usernameHelp" required>
               <label for="floatingInput exampleInputUsername1"> username</label>
@@ -34,35 +34,35 @@ P01 -- ArRESTed Development
               <label for="floatingInput exampleInputPassword1"> password </label>
             </div>
 
-            <!-- OLD PASSWORD CODE 
+            <!-- OLD PASSWORD CODE
             <div class="mb-4">
               <label for="exampleInputPassword1" class="form-label">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="newpassword" required>
             </div>
-            --> 
+            -->
 
             <div class="form-floating form-group mb-4">
               <input class="form-control" type="password" placeholder="i can be BIIIG" id="exampleInputPassword1 floatingInput" name="newpassword1" aria-describedby="usernameHelp" required>
               <label for="floatingInput exampleInputPassword1"> confirm password </label>
             </div>
 
-            <!-- OLD CONFIRM PASSWORD CODE 
+            <!-- OLD CONFIRM PASSWORD CODE
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="newpassword1" required>
             </div>
-            --> 
+            -->
 
             <center>
-              <div class="form-group"> 
-                <input type="submit" value="Register" class="btn btn-danger submitbutton"></input>
+              <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary submitbutton"></input>
               </div>
             </center>
           </form>
 
           <br>
 
-          <div class="form-group"> 
+          <div class="form-group">
             <p style="color:red;">{{ explain }}</p>
             <a id="login" href = "/login"> Have an Account? Login!</a>
           </div>

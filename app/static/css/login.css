@@ -7,6 +7,14 @@ P01 -- ArRESTed Development
 
 /* COLOR PALLETE:  https://coolors.co/7400b8-6930c3-5e60ce-5390d9-4ea8de-48bfe3-56cfe1-64dfdf-72efdd-80ffdb*/
 
+:root {
+   --primary: #5f43b2; /* studio color */
+   --secondary: #3a3153; /* martinique */
+   --black: #010101;
+   --white: #fefdfd;
+   --dirty_white: #f8fafb;
+   --gray: #b1aebb;
+}
 
 html,body{
   background-image: url('https://images.creativemarket.com/0.1.0/ps/7195022/1820/1213/m1/fpnw/wm1/xwb9oarfuev6zb447edps3fveyrb70ccwfjokoi72phum25sfahqfycut0dgo83f-.jpg?1571959749&s=14070a07f1d463a912151fd6345f748d');
@@ -46,4 +54,3 @@ html,body{
 #register, #login {
   color:  rgba(255, 255, 255, 1);
 }
-
