@@ -169,6 +169,9 @@ def display_movie(media_id):
 
 @app.route("/update", methods=["POST"])
 def update_library():
+	"""
+	Updates user's completion of media based on their input from save completion.
+	"""
 	table = {}
 	for key, value in request.form.items():
 		media_type, media_id = key.split("-")
@@ -183,6 +186,28 @@ def update_library():
 
 	database.update_completion(session["user_id"], completion_statuses)
 	return redirect("/")
+
+
+@app.route("/users")
+def all_libraries():
+	"""
+	Routes to a page with links to all the users' libraries.
+	"""
+	if not logged_in():
+		return redirect("/login") #do we render it or redirect?
+	users = database.all_users()
+	return render_template("users.html", users=users)
+
+
+@app.route("/user/<user_id>")
+def library(user_id):
+	"""
+	Displays a specific user's library.
+	"""
+	if not logged_in():
+		return redirect("/login") #do we render it or redirect?
+	entries = database.fetch_entries(user_id) #users' library
+	return render_template("library.html", user=database.fetch_username(user_id), library=entries)
 
 
 if __name__ == "__main__":

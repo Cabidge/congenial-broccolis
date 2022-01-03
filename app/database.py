@@ -360,3 +360,30 @@ def update_completion(user_id, completion_statuses):
 
 	db.commit()
 	db.close()
+
+
+def all_users():
+	"""
+	Returns a list of dictionaries which has a username and user_id for all users
+	"""
+	db = sqlite3.connect(DB_FILE)
+	c = db.cursor()
+
+	c.execute("""
+		SELECT id
+		     , username
+		FROM   users """)
+
+	users_data = c.fetchall()
+
+	users = []
+	for id, username in users_data:
+		user = {}
+		user["user_id"] = id
+		user["username"] = username
+		users.append(user)
+
+	db.commit()
+	db.close()
+
+	return users
