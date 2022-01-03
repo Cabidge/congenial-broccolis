@@ -362,9 +362,10 @@ def update_completion(user_id, completion_statuses):
 	db.close()
 
 
-def all_users():
+def all_users(current_user):
 	"""
 	Returns a list of dictionaries which has a username and user_id for all users
+	except the current_user.
 	"""
 	db = sqlite3.connect(DB_FILE)
 	c = db.cursor()
@@ -378,10 +379,11 @@ def all_users():
 
 	users = []
 	for id, username in users_data:
-		user = {}
-		user["user_id"] = id
-		user["username"] = username
-		users.append(user)
+		if id != current_user:
+			user = {}
+			user["user_id"] = id
+			user["username"] = username
+			users.append(user)
 
 	db.commit()
 	db.close()

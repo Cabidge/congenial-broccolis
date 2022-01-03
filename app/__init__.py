@@ -37,7 +37,7 @@ def login():
 	if logged_in():
 		return redirect("/")
 
-	if request.method == 'GET':
+	if request.method == 'GET': #just getting to the page with no inputs
 		return render_template("login.html")
 
 	username = request.form["username"]
@@ -45,7 +45,7 @@ def login():
 
 	#this may not be needed because bootstrap checks it for us
 	if username.strip() == "" or password.strip() == "":
-		return render_template("login.html", explain = "Username/Password cannot be blank")
+		return render_template("login.html", explain = "Username or Password cannot be blank")
 
 	# Verify this user and password exists
 	user_id = database.fetch_user_id(username, password)
@@ -87,18 +87,17 @@ def signup():
 	user = request.form["newusername"]
 	pwd = request.form["newpassword"]
 	if user.strip() == "" or pwd.strip == "":
-		return render_template("register.html", explain="Please enter characters and/or numbers")
+		return render_template("register.html", explain="Username or Password cannot be blank")
 
 	# Add user information if passwords match
 	if (request.form["newpassword"] != request.form["newpassword1"]):
 		return render_template("register.html", explain="The passwords do not match")
-	else:
-		register_success = database.register_user(user, pwd) # checks if not successful in the database file
 
+	register_success = database.register_user(user, pwd) #checks if not successful in the database file
 	if not register_success:
 		return render_template("register.html", explain="Username already exists")
 	else:
-		return render_template("login.html")
+		return redirect("/login")
 
 
 @app.route("/search", methods=["POST"])
@@ -191,11 +190,11 @@ def update_library():
 @app.route("/users")
 def all_libraries():
 	"""
-	Routes to a page with links to all the users' libraries.
+	Routes to a page with links to all users' libraries except the current user.
 	"""
 	if not logged_in():
 		return redirect("/login") #do we render it or redirect?
-	users = database.all_users()
+	users = database.all_users(session["user_id"])
 	return render_template("users.html", users=users)
 
 
