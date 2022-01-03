@@ -46,10 +46,10 @@ body{
 }
 
 .navbar {
-  background-image: url('https://htmlcolors.com/gradients-images/52-strong-purple-gradient.jpg') !important; 
-  font-size:  1.4rem;
+  background-color: #bd9dea !important; 
   font-style:  bold;
   position:  fixed;
   width:  100%;
+  height:  75ox;
   z-index: 9999;
 } 
