@@ -19,10 +19,10 @@ P01 -- ArRESTed Development
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
+    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid"> -->
         <!-- Navigation bar content -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" href="/">Home</a>
@@ -36,11 +36,30 @@ P01 -- ArRESTed Development
           </ul>
         </div>
       </div>
+    </nav>-->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style = "">
+      <div class="container-fluid">
+          <a href="#" class="navbar-brand"><img style="height: 4rem;" src="https://cdn-icons-png.flaticon.com/512/225/225932.png"></a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav">
+                  <a href="/" class="nav-item nav-link active" style = "color: white; font-size: 1.5rem">Home</a>
+              </div>
+              <div class="navbar-nav ms-auto">
+                  <a href="/users" class="nav-item nav-link" style = "color: white; font-size: 1.5rem">Users</a>
+                  <a href="/logout" class="nav-item nav-link" style = "color: white; font-size: 1.5rem">Logout</a>
+              </div>
+          </div>
+      </div>
     </nav>
 
     <!-- Heading -->
     <center>
-      <h1>{{user}}'s Library</h1>
+      <h1 style= "  padding-top:  8rem;">{{user}}'s Library
+      </h1>
     </center>
     <br>
 

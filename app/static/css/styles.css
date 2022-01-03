@@ -44,3 +44,12 @@ body{
 .active {
   color: black;
 }
+
+.navbar {
+  background-image: url('https://htmlcolors.com/gradients-images/52-strong-purple-gradient.jpg') !important; 
+  font-size:  1.4rem;
+  font-style:  bold;
+  position:  fixed;
+  width:  100%;
+  z-index: 9999;
+} 
