@@ -140,3 +140,6 @@ Add new stylesheet, finish login and register page styling.
 
 rachelX -- 2022-01-02 00:55
 Added a feature for users to remove from library.
+
+rachelX -- 2022-01-02 22:45
+Allow users to look at other users' library.
