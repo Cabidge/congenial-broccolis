@@ -19,22 +19,26 @@ P01 -- ArRESTed Development
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style = "">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-          <a href="/" class="navbar-brand"><img style="height: 4rem;" src="https://cdn-icons-png.flaticon.com/512/225/225932.png"></a>
-          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-              <div class="navbar-nav">
-                  <a href="/" class="nav-item nav-link" style = "color: #3a3153; font-size: 1.3rem">Home</a>
-                  <a href="/users" class="nav-item nav-link" style = "color: white; font-size: 1.3rem">Users</a>
-                  <a class="nav-link" style="color: white; font-size: 1.3rem" href="#" onclick="history.back()">Results</a>
-              </div>
-              <div class="navbar-nav ms-auto">
-                  <a href="/logout" class="nav-item nav-link" style = "color: white; font-size: 1.3rem">Logout</a>
-              </div>
-          </div>
+        <a href="/" class="navbar-brand"><img style="height: 4rem;" src="https://cdn-icons-png.flaticon.com/512/225/225932.png"></a>
+        <!-- Navigation bar content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" style="color: white; font-size: 1.3rem" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/users" class="nav-item nav-link" style="color: #3a3153; font-size: 1.3rem">Users</a>
+            </li>
+            <li>
+              <a class="nav-link" style="color: white; font-size: 1.3rem" href="#" onclick="history.back()">Results</a>
+            </li>
+            <li class="nav-item navbar-nav ms-auto">
+              <a href="/logout" class="nav-item nav-link" style="color: white; font-size: 1.3rem">Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
