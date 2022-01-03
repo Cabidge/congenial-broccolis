@@ -5,7 +5,7 @@ import json
 
 keys = {}
 for i in range(3):
-	with open("../keys/key_api" + str(i) + ".txt") as f:
+	with open("keys/key_api" + str(i) + ".txt") as f:
 		for line in f:
 			# List destructuring
 			[k, v] = line.rstrip().split("=")
