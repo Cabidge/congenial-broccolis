@@ -143,3 +143,9 @@ Added a feature for users to remove from library.
 
 rachelX -- 2022-01-02 22:45
 Allow users to look at other users' library.
+
+lieselW -- 2022-01-03 06:30
+styling for navigation bar in home.html
+
+lieselW --2022-01-04 01:06
+Added favicon, responsive navigation styling
