@@ -19,3 +19,13 @@ An online library containing a user selected list of books and movies. Each user
 5. Cd into app directory: `cd app`
 6. Start the Flask server: `python3 __init__.py`
 7. In a browser, paste in `https://127.0.0.1:5000/`
+
+## Demo Set-up:
+
+1. Cd into app directory if not already in: `cd app`
+2. Copy demo database file: `cp demo_database.db database.db`
+
+This database file contains two premade accounts with a prefilled library of entries.
+The account details are (username;password):
+- demo;a
+- demo2;a
