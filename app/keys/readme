@@ -1,0 +1,8 @@
+key_nyt:
+New York Times api -- used to find a nyt movie review.
+
+key_imdb:
+IMDB api -- used to collect information of a movie and to search for movies.
+
+key_google
+Google Books api -- used to get summary of a book.

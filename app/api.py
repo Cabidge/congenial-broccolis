@@ -4,12 +4,9 @@ from urllib.error import HTTPError, URLError
 import json
 
 keys = {}
-for i in range(3):
-	with open("keys/key_api" + str(i) + ".txt") as f:
-		for line in f:
-			# List destructuring
-			[k, v] = line.rstrip().split("=")
-			keys[k] = v
+for key_name in ["imdb", "nyt", "google"]:
+	with open("keys/key_" + key_name + ".txt") as f:
+		keys[key_name] = f.read()
 
 imdb_endpoint = "https://imdb-api.com/en/API"
 ol_endpoint = "http://openlibrary.org"

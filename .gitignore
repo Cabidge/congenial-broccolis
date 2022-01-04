@@ -1,5 +1,5 @@
 database.db
-keys.txt
+app/keys/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
