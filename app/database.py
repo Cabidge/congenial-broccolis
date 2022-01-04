@@ -149,6 +149,9 @@ def search_for_movies(title):
 		return []
 
 	res = json["results"]
+	if res is None:
+		return []
+
 	movies = []
 	for result in res:
 		#print(result["title"])
