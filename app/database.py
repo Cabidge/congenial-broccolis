@@ -227,7 +227,7 @@ def search_for_books(title):
 		else:
 			book["author"] = "No Author"
 		google_dict = api.google_search(result["title"])
-		if len(google_dict) != 0:
+		if google_dict is not None and len(google_dict) != 0:
 			book["summary"] = google_dict["summary"]
 			book["pages"] = google_dict["pages"]
 		else:
