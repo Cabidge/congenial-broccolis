@@ -10,7 +10,10 @@ Updated site map to better show the linkages of pages of the website.
 
 2022-01-02 01:10
 Updated books and movies database tables.
-Updated sit map
+Updated site map.
+
+2022-01-05 00:39
+Updated components map.
 
 wenhaoD -- 2021-12-13 09:23
 Started work on database module.
@@ -156,6 +159,6 @@ Debugging
 lieselW -- 2022-01-04 09:05
 Debugging
 
-lieselW -- 2022-01-05 12:39
+lieselW -- 2022-01-05 00:39
 Added components map to design document
 
