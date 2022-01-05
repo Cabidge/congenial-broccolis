@@ -7,7 +7,13 @@
 - Liesel Wong - Bootstrap/Jinja
 
 ## Description
-An online library containing a user selected list of books and movies. Each user has their own personal library, which has only the books and movies they themselves selected. The user can mark a book/movie as finished or not finished, and can choose to add more books/movies via a search.
+An online library containing a personalized selection list of books and movies. Each user has their own personal library, which has only the books and movies they added to. They can add these via a search or by looking through other users’ libraries. The user can mark a book or movie as finished or not finished. Users can also remove books or movies from their library.
+
+## API Cards
+- [IMDb](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_imdb.md)
+- [NYTimes](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_nyt.md)
+   - [NYTimes Movie Reviews](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_MovieReviews.md)
+- [Google Books](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_GoogleBooks.md)
 
 ## Launch Codes:
 
