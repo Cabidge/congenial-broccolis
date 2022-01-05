@@ -152,3 +152,10 @@ Added favicon, responsive navigation styling, edit instructions on website
 
 wenhaoD -- 2022-01-04 09:04
 Debugging
+
+lieselW -- 2022-01-04 09:05
+Debugging
+
+lieselW -- 2022-01-05 12:39
+Added components map to design document
+
