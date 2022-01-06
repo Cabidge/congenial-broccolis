@@ -11,6 +11,7 @@ An online library containing a personalized selection list of books and movies. 
 
 ## API Cards
 - [IMDb](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_imdb.md)
+- [Open Library](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_OpenLibrary.md)
 - [NYTimes](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_nyt.md)
    - [NYTimes Movie Reviews](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_MovieReviews.md)
 - [Google Books](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_GoogleBooks.md)
